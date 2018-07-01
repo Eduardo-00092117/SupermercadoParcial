@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Dao.EntidadesDAO;
-import Dao.DAO;
+
 import Dao.DAO;
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,9 +14,10 @@ import java.util.List;
  *
  * @author Eduardo Alberto López Torres <Carnet: 00092117>
  */
-public abstract class BaseDao<T> implements DAO<T>{
+public abstract class BaseDao<T> implements DAO<T> {
+
     protected DatosTabla tabla;
-    
+
     class DatosTabla {
 
         final String TABLE_NAME;
@@ -29,6 +30,7 @@ public abstract class BaseDao<T> implements DAO<T>{
             this.fields = fields;
         }
     }
+
     private void cerrarConexion(Connection con) {
         try {
             con.close();
@@ -36,16 +38,25 @@ public abstract class BaseDao<T> implements DAO<T>{
             e.printStackTrace();
         }
     }
-    public BaseDao(){
-        
+
+    public BaseDao() {
+
     }
+
     public BaseDao(DatosTabla tabla) {
         this.tabla = tabla;
     }
+
     abstract T mapaObjeto(ResultSet resultSet);
+
     abstract PreparedStatement getSelectStatement(Connection con, T find, String by);
+
     abstract PreparedStatement getInsertStatement(Connection con, T _new);
+    
+    abstract PreparedStatement getUpdateStatement(Connection con, T _new);
+
     abstract PreparedStatement getDeleteStatement(Connection con, T deleteObject);
+
     @Override
     public List<T> findAll() {
         Connection con = null;
@@ -68,6 +79,7 @@ public abstract class BaseDao<T> implements DAO<T>{
         }
         return listObject;
     }
+
     @Override
     public List<T> findBy(T find, String by) {
         Connection con = null;
@@ -89,7 +101,8 @@ public abstract class BaseDao<T> implements DAO<T>{
         }
         return list;
     }
-      @Override
+
+    @Override
     public boolean insert(T insertObject) {
         Connection con = null;
         boolean inserted = false;
@@ -106,23 +119,37 @@ public abstract class BaseDao<T> implements DAO<T>{
         }
         return inserted;
     }
-    
+
     @Override
     public boolean update(T updateObject) {
-        return false;
+        Connection con = null;
+        boolean updated = false;
+        try {
+            con = this.con.getCnx();
+            PreparedStatement preparedStatement = getUpdateStatement(con, updateObject);
+            updated = preparedStatement.execute();
+
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            cerrarConexion(con);
+        }
+        return updated;
     }
+
     @Override
     public boolean delete(T deleteObject) {
         Connection con = null;
         boolean delete = false;
         try {
             con = this.con.getCnx();
-            PreparedStatement preparedStatement = getDeleteStatement(con,deleteObject);
-            if(preparedStatement.executeUpdate() > 0){
+            PreparedStatement preparedStatement = getDeleteStatement(con, deleteObject);
+            if (preparedStatement.executeUpdate() > 0) {
                 delete = true;
             }
             preparedStatement.close();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             cerrarConexion(con);
@@ -133,6 +160,6 @@ public abstract class BaseDao<T> implements DAO<T>{
     protected Date getDate(java.util.Date date) {
         return new Date(date.getTime());
     }
-*/
-    
+     */
+
 }

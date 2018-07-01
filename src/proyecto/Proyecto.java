@@ -21,12 +21,13 @@ public class Proyecto {
         Proveedor Dpro = new Proveedor();
         ProveedorDAO Cpro = new ProveedorDAO();
         Dpro.setNombreEmpresa("Panini");
-        Dpro.setNombreEncargado("CULERO");
+        Dpro.setNombreEncargado("Roberto");
         Dpro.setDuiEncargado("1233");
         Dpro.setTelefonoEncargado("12212");
-        Dpro.setUrlEncargado("www.hola.com");
-        
+        Dpro.setUrlEncargado("www.hola.com");        
         Cpro.insert(Dpro);
+        Dpro.setIdProveedor(1);
+        Cpro.update(Dpro);
     }
     
 }
