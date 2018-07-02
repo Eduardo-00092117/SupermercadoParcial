@@ -156,10 +156,10 @@ public abstract class BaseDao<T> implements DAO<T> {
         }
         return delete;
     }
-    /*
+
     protected Date getDate(java.util.Date date) {
         return new Date(date.getTime());
     }
-     */
+
 
 }
