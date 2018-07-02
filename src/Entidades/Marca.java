@@ -44,6 +44,14 @@ public class Marca {
     public void setDescripcionMarca(String descripcionMarca) {
         this.descripcionMarca = descripcionMarca;
     }
-    private int idMarca;
+    private int idMarca,fk_idProveedor;
     private String nombreEmpresa,nombreMarca,descripcionMarca;
+
+    public int getFk_idProveedor() {
+        return fk_idProveedor;
+    }
+
+    public void setFk_idProveedor(int fk_idProveedor) {
+        this.fk_idProveedor = fk_idProveedor;
+    }
 }
