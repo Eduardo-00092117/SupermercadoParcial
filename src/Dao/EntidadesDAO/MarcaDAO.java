@@ -51,13 +51,13 @@ public class MarcaDAO extends BaseDao<Marca>{
                 preparedStatement.setString(1,"%"+find.getNombreEmpresa()+"%");
             }
             else if(by.equals(tabla.fields[1])){
-                preparedStatement.setString(2,"%"+find.getNombreMarca()+"%");
+                preparedStatement.setString(1,"%"+find.getNombreMarca()+"%");
             }
             else if(by.equals(tabla.fields[2])){
-                preparedStatement.setString(3, "%"+find.getDescripcionMarca()+"%");
+                preparedStatement.setString(1, "%"+find.getDescripcionMarca()+"%");
             }
             else if(by.equals(tabla.fields[3])){
-                preparedStatement.setInt(4, find.getFk_idProveedor());
+                preparedStatement.setInt(1, find.getFk_idProveedor());
             }
         }
         catch(SQLException error){

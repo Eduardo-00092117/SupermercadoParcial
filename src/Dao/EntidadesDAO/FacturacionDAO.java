@@ -52,7 +52,7 @@ public class FacturacionDAO extends BaseDao<Facturacion>{
                 preparedStatement.setString(1,"%"+find.getFechaFactura()+"%");
             }
             else if(by.equals(tabla.fields[1])){
-                preparedStatement.setString(2,"%"+find.getHoraFactura()+"%");
+                preparedStatement.setString(1,"%"+find.getHoraFactura()+"%");
             }
         }
         catch (SQLException error){
