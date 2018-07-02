@@ -79,7 +79,7 @@ public class CategoriaMarcaDAO extends BaseDao<CategoriaMarca> {
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = con.prepareStatement("UPDATE"+tabla.TABLE_NAME+"SET"+tabla.fields[0]+"=?,"+tabla.fields[1]+"=?,"
-                    +"= ? WHERE"+tabla.PRIMARY_KEY+"=?");
+                    +"WHERE"+tabla.PRIMARY_KEY+"=?");
             preparedStatement.setString(1, _new.getNombreCategoriaMarca());
             preparedStatement.setString(2, _new.getDescripcionCategoriaMarca());
         }
