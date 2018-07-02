@@ -34,7 +34,15 @@ public class Facturacion {
     public void setHoraFactura(String horaFactura) {
         this.horaFactura = horaFactura;
     }
-    private int idFactura;
+    private int idFactura, fk_idEmpleado;
+
+    public int getFk_idEmpleado() {
+        return fk_idEmpleado;
+    }
+
+    public void setFk_idEmpleado(int fk_idEmpleado) {
+        this.fk_idEmpleado = fk_idEmpleado;
+    }
     private String fechaFactura,horaFactura;
     public Facturacion(){
         
