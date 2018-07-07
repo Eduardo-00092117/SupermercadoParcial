@@ -19,6 +19,8 @@ import java.sql.SQLException;
  */
 public class UsuarioDAO extends BaseDao<Usuario> { //<Proveedor> es el tipo de variable, en este caso es de tipo la clase Proveedor
 
+    public static int tipoUsuario;
+    
     public UsuarioDAO() {
         tabla = new DatosTabla(
                 /*Se crear un campo de tipo jugador, el cual almacena la tabla, 
@@ -50,9 +52,9 @@ public class UsuarioDAO extends BaseDao<Usuario> { //<Proveedor> es el tipo de v
             if (by.equals(tabla.PRIMARY_KEY)) {
                 preparedStatement.setInt(1, find.getIdUsuario());
             } else if (by.equals(tabla.fields[0])) {
-                preparedStatement.setString(1, "%" + find.getUsuario() + "%");
+                preparedStatement.setString(1, find.getUsuario());
             } else if (by.equals(tabla.fields[1])) {
-                preparedStatement.setString(1, "%" + find.getPass() + "%");
+                preparedStatement.setString(1, find.getPass());
             } else if (by.equals(tabla.fields[2])) {
                 preparedStatement.setInt(1, find.getFK_idEmpleado());
             } 
@@ -95,20 +97,13 @@ public class UsuarioDAO extends BaseDao<Usuario> { //<Proveedor> es el tipo de v
         try {
             preparedStatement = con.prepareStatement(
                     "UPDATE " + tabla.TABLE_NAME
-                    + " SET " + tabla.fields[0] + " = ?, " + tabla.fields[1] + " = ?, " + tabla.fields[2] + " = ?, "
-                    + tabla.fields[3] + " = ?, " + tabla.fields[4] + " = ?, " + tabla.fields[5] + " = ? "
-                    + tabla.fields[6] + " = ?, " + tabla.fields[7] + " = ?, " + tabla.fields[8] + " = ? WHERE " + tabla.PRIMARY_KEY + " = ?");
+                    + " SET " + tabla.fields[0] + " = ?, " + tabla.fields[1] + " = ?, " + tabla.fields[2] + " = ? "
+                            + " WHERE " + tabla.PRIMARY_KEY + " = ?");
 
-            /*preparedStatement.setString(1, _new.getNombreEmpleado());
-            preparedStatement.setString(2, _new.getApellidoEmpleado());
-            preparedStatement.setString(3, _new.getFechaEmpleado());
-            preparedStatement.setString(4, _new.getDuiEmpleado());
-            preparedStatement.setString(5, _new.getNitEmpleado());
-            preparedStatement.setString(6, _new.getCorreoEmpleado());
-            preparedStatement.setDouble(7, _new.getSueldoEmpleado());
-            preparedStatement.setInt(8, _new.getFk_idEstado());
-            preparedStatement.setInt(9, _new.getFk_idCargo());
-            preparedStatement.setInt(10, _new.getIdEmpleado());*/
+            preparedStatement.setString(1, _new.getUsuario());
+            preparedStatement.setString(2, _new.getPass());
+            preparedStatement.setInt(3, _new.getFK_idEmpleado());
+            preparedStatement.setInt(4, _new.getIdUsuario());
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -40,8 +40,8 @@ public class EmpleadoDAO extends BaseDao<Empleado> { //<Proveedor> es el tipo de
             emp.setNitEmpleado(resultSet.getString(tabla.fields[4]));
             emp.setCorreoEmpleado(resultSet.getString(tabla.fields[5]));
             emp.setSueldoEmpleado(resultSet.getDouble(tabla.fields[6]));
-            emp.setFk_idCargo(resultSet.getInt(tabla.fields[7]));
-            emp.setFk_idEstado(resultSet.getInt(tabla.fields[8]));
+            emp.setFk_idEstado(resultSet.getInt(tabla.fields[7]));
+            emp.setFk_idCargo(resultSet.getInt(tabla.fields[8]));
         } catch (SQLException error) {
             error.printStackTrace();
         }
@@ -57,17 +57,17 @@ public class EmpleadoDAO extends BaseDao<Empleado> { //<Proveedor> es el tipo de
             if (by.equals(tabla.PRIMARY_KEY)) {
                 preparedStatement.setInt(1, find.getIdEmpleado());
             } else if (by.equals(tabla.fields[0])) {
-                preparedStatement.setString(1, "%" + find.getNombreEmpleado() + "%");
+                preparedStatement.setString(1, find.getNombreEmpleado());
             } else if (by.equals(tabla.fields[1])) {
-                preparedStatement.setString(1, "%" + find.getApellidoEmpleado() + "%");
+                preparedStatement.setString(1, find.getApellidoEmpleado());
             } else if (by.equals(tabla.fields[2])) {
-                preparedStatement.setString(1, "%" + find.getFechaEmpleado() + "%");
+                preparedStatement.setString(1, find.getFechaEmpleado());
             } else if (by.equals(tabla.fields[3])) {
-                preparedStatement.setString(1, "%" + find.getDuiEmpleado() + "%");
+                preparedStatement.setString(1,  find.getDuiEmpleado());
             } else if (by.equals(tabla.fields[4])) {
-                preparedStatement.setString(1, "%" + find.getNitEmpleado() + "%");
+                preparedStatement.setString(1, find.getNitEmpleado());
             } else if (by.equals(tabla.fields[5])) {
-                preparedStatement.setString(1, "%" + find.getCorreoEmpleado() + "%");
+                preparedStatement.setString(1, find.getCorreoEmpleado());
             } else if (by.equals(tabla.fields[6])) {
                 preparedStatement.setDouble(1, find.getSueldoEmpleado());
             } else if (by.equals(tabla.fields[7])) {
