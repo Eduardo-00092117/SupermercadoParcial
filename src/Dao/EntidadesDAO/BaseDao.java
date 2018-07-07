@@ -114,6 +114,7 @@ public abstract class BaseDao<T> implements DAO<T> {
             preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
         } finally {
             cerrarConexion(con);
         }

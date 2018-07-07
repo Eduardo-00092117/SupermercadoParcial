@@ -10,6 +10,9 @@ package Entidades;
  * @author LN710Q
  */
 public class Usuario {
+    private int idUsuario, FK_idEmpleado;
+    private String usuario, pass;
+    
     public Usuario(){
         
     }
@@ -36,6 +39,13 @@ public class Usuario {
     public void setPass(String pass) {
         this.pass = pass;
     }
-    private int idUsuario;
-    private String usuario, pass;
+
+    public int getFK_idEmpleado() {
+        return FK_idEmpleado;
+    }
+
+    public void setFK_idEmpleado(int FK_idEmpleado) {
+        this.FK_idEmpleado = FK_idEmpleado;
+    }
+    
 }

@@ -54,4 +54,11 @@ public class Marca {
     public void setFk_idProveedor(int fk_idProveedor) {
         this.fk_idProveedor = fk_idProveedor;
     }
+
+    @Override
+    public String toString() {
+        return "Marca{" + "idMarca=" + idMarca + ", fk_idProveedor=" + fk_idProveedor + ", nombreEmpresa=" + nombreEmpresa + ", nombreMarca=" + nombreMarca + ", descripcionMarca=" + descripcionMarca + '}';
+    }
+    
+    
 }

@@ -6,6 +6,8 @@
 package Dao;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,7 +36,6 @@ public class Conexion {
         
         try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            cnx = DriverManager.getConnection(this.driver+this.nombre_base+this.security);
         }catch(Exception ex){
             System.out.println("Error en la conexion");
         }
@@ -49,7 +50,13 @@ public class Conexion {
     }
     
     public Connection getCnx(){
-        return cnx;
+        try {
+            //Abre la conexion cuando se necesita.
+            return DriverManager.getConnection(this.driver+this.nombre_base+this.security);
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     public void cerrarConexion(){

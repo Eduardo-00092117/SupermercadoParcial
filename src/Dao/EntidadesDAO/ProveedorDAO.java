@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  *
@@ -53,11 +52,11 @@ public class ProveedorDAO extends BaseDao<Proveedor> { //<Proveedor> es el tipo 
             if (by.equals(tabla.PRIMARY_KEY)) {
                 preparedStatement.setInt(1, find.getIdProveedor());
             } else if (by.equals(tabla.fields[0])) {
-                preparedStatement.setString(1, "%" + find.getNombreEmpresa() + "%");
+                preparedStatement.setString(1, find.getNombreEmpresa());
             } else if (by.equals(tabla.fields[1])) {
-                preparedStatement.setString(1, "%" + find.getNombreEncargado() + "%");
+                preparedStatement.setString(1, find.getNombreEncargado());
             } else if (by.equals(tabla.fields[2])) {
-                preparedStatement.setString(1, "%" + find.getDuiEncargado() + "%");
+                preparedStatement.setString(1, find.getDuiEncargado());
             } else if (by.equals(tabla.fields[3])) {
                 preparedStatement.setString(1, find.getTelefonoEncargado());
             } else if (by.equals(tabla.fields[4])) {
@@ -124,7 +123,7 @@ public class ProveedorDAO extends BaseDao<Proveedor> { //<Proveedor> es el tipo 
         return preparedStatement;
     }
 
-    public List<Proveedor> findByIdProveedor(Proveedor estudiante) {
+    /*public List<Proveedor> findByIdProveedor(Proveedor estudiante) {
         return findBy(estudiante, tabla.PRIMARY_KEY);
     }
 
@@ -146,5 +145,5 @@ public class ProveedorDAO extends BaseDao<Proveedor> { //<Proveedor> es el tipo 
 
     public List<Proveedor> findByUrlEncargado(Proveedor estudiante) {
         return findBy(estudiante, tabla.fields[4]);
-    }
+    }*/
 }

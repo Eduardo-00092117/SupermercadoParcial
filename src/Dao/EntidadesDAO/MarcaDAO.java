@@ -89,8 +89,8 @@ public class MarcaDAO extends BaseDao<Marca>{
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = con.prepareStatement(
-            "UPDATE"+tabla.TABLE_NAME+"SET"+tabla.fields[0]+"=?,"+tabla.fields[1]+"=?,"+tabla.fields[2]+"=?,"+tabla.fields[3]
-                    +"= ? WHERE"+tabla.PRIMARY_KEY+"=?"
+            "UPDATE "+tabla.TABLE_NAME+" SET "+tabla.fields[0]+" = ?,"+tabla.fields[1]+" = ?, "+tabla.fields[2]+" = ?, "+tabla.fields[3]
+                    +" = ? WHERE "+tabla.PRIMARY_KEY+" = ?"
                     
             );
                  preparedStatement.setString(1, _new.getNombreEmpresa());
@@ -110,7 +110,7 @@ public class MarcaDAO extends BaseDao<Marca>{
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = con.prepareStatement(
-            "DELETE FROM "+tabla.TABLE_NAME+"WHERE "+ tabla.PRIMARY_KEY+"=?"
+            "DELETE FROM "+tabla.TABLE_NAME+" WHERE "+ tabla.PRIMARY_KEY+" = ?"
             );
             preparedStatement.setInt(1, deleteObject.getIdMarca());
         }
