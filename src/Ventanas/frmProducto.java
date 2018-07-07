@@ -284,6 +284,10 @@ public class frmProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         ProductoDAO proDao = new ProductoDAO();
         Producto producto = new Producto();
+        MarcaDAO marcaDao = new MarcaDAO();
+        CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
+        Marca marca = new Marca();
+        CategoriaProducto catPro = new CategoriaProducto();
         producto.setNombreProducto(txtProducto.getText());
         producto.setCantidadProducto(Integer.parseInt(SpnCantidad.getValue().toString()));//Convirtiendo el tipo objeto del spinner
         producto.setPrecioCompra(Double.parseDouble(txtPrecioCompra.getText().toString()));//Convirtiendo  
@@ -291,6 +295,8 @@ public class frmProducto extends javax.swing.JFrame {
         producto.setFechaIngresoProducto(txtFechaIngreso.getText());
         producto.setFechaCaducidadProducto(txtFechaCaducidad.getText());
         producto.setDescripcionProducto(txtAreaDescripcion.getText());
+        producto.setFK_idMarca(marcaDao.findBy(marca,"Nombre_empresa").get(0).getIdMarca());//PARA FK ID MARCA
+        producto.setFK_idCategoriaProducto(catProDao.findBy(catPro, "Nombre_empresa").get(0).getIdCategoriaProducto()); //PARA FK ID CATEGORIA PRODUCTO
         proDao.insert(producto);
         JOptionPane.showMessageDialog(null, "Datos ingresado con exitos");
         limpiar();
@@ -301,6 +307,10 @@ public class frmProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         ProductoDAO proDao = new ProductoDAO();
         Producto producto = new Producto();
+        CategoriaProducto catPro = new CategoriaProducto();
+        MarcaDAO marcaDao = new MarcaDAO();
+        CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
+        Marca marca = new Marca();
         producto.setNombreProducto(txtProducto.getText());
         producto.setCantidadProducto(Integer.parseInt(SpnCantidad.getValue().toString()));//Convirtiendo el tipo objeto del spinner
         producto.setPrecioCompra(Double.parseDouble(txtPrecioCompra.getText().toString())); //Convirtiendo 
@@ -308,6 +318,8 @@ public class frmProducto extends javax.swing.JFrame {
         producto.setFechaIngresoProducto(txtFechaIngreso.getText());
         producto.setFechaCaducidadProducto(txtFechaCaducidad.getText());
         producto.setDescripcionProducto(txtAreaDescripcion.getText());
+        producto.setFK_idMarca(marcaDao.findBy(marca,"Nombre_empresa").get(0).getIdMarca());//PARA FK ID MARCA
+        producto.setFK_idCategoriaProducto(catProDao.findBy(catPro, "Nombre_empresa").get(0).getIdCategoriaProducto()); //PARA FK ID CATEGORIA PRODUCTO
         proDao.update(producto);
         JOptionPane.showMessageDialog(null, "Datos actualizados con exito");
         limpiar();
@@ -337,7 +349,8 @@ public class frmProducto extends javax.swing.JFrame {
         //Se ocupa para borrar los datos de la tabla.
         DefaultTableModel modelos = (DefaultTableModel) tableProducto.getModel();
         while(modelos.getRowCount()>0)modelos.removeRow(0);
-        
+        MarcaDAO marcaDao = new MarcaDAO();
+        CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
         ProductoDAO proDao = new ProductoDAO();
         Marca marca = new Marca();
         CategoriaProducto catPro = new CategoriaProducto();
@@ -354,7 +367,9 @@ public class frmProducto extends javax.swing.JFrame {
               tableProducto.setValueAt(producto.getFechaCaducidadProducto(), nuevaFila, 6);
               tableProducto.setValueAt(producto.getDescripcionProducto(), nuevaFila, 7);
               marca.setIdMarca(producto.getFK_idMarca());
+              tableProducto.setValueAt(marcaDao.findBy(marca, "idMarca").get(0).getNombreMarca(), nuevaFila, 8);//PARA FK ID MARCA
               //catPro.setIdCantidadProducto(producto.getFK_idCategoriaProducto());
+               //PARA FK ID CATEGORIA PRODUCTO
               
         }
     }
