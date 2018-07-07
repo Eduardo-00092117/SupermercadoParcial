@@ -95,16 +95,17 @@ public class frmProducto extends javax.swing.JFrame {
 
         tableProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "idProducto", "NombreProducto", "CantidadProducto", "PrecioCompra", "PrecioVenta", "FechaIngreso", "FechaCaducidad", "DescripcionProducto", "FK_idMarca", "FK_idCategoriaProducto"
             }
         ));
         jScrollPane2.setViewportView(tableProducto);
+        if (tableProducto.getColumnModel().getColumnCount() > 0) {
+            tableProducto.getColumnModel().getColumn(0).setMinWidth(0);
+            tableProducto.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         txtAreaDescripcion.setColumns(20);
         txtAreaDescripcion.setRows(5);
