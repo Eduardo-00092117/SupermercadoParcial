@@ -19,7 +19,7 @@ import java.util.List;
 public class CategoriaProductoDAO extends BaseDao<CategoriaProducto>{
     public CategoriaProductoDAO(){
         tabla = new DatosTabla(
-        "CategoriaProducto","idCategoriaProducto",new String[]{"nombre","descripcion "}
+        "CategoriaProducto","idCategoriaProducto",new String[]{"nombre","descripcion"}
         );
     }
     @Override
@@ -39,9 +39,10 @@ public class CategoriaProductoDAO extends BaseDao<CategoriaProducto>{
     @Override
     PreparedStatement getSelectStatement(Connection con, CategoriaProducto find, String by) {
         PreparedStatement preparedStatement = null;
-        String query = "SELECT * FROM "+ tabla.TABLE_NAME+"WHERE"+by+"=?";
+        String query = "SELECT * FROM "+ tabla.TABLE_NAME+" WHERE "+by+" = ?";
         try{
-                        if(by.equals(tabla.PRIMARY_KEY)){
+            preparedStatement = con.prepareStatement(query);
+           if(by.equals(tabla.PRIMARY_KEY)){
                 preparedStatement.setInt(1, find.getIdCategoriaProducto());
             }
             else if(by.equals(tabla.fields[0])){
@@ -63,7 +64,7 @@ public class CategoriaProductoDAO extends BaseDao<CategoriaProducto>{
         PreparedStatement preparedStatement = null;
         try{
              preparedStatement = con.prepareStatement(
-                    "INSERT INTO"+tabla.TABLE_NAME+"("+tabla.fields[0]+","+tabla.fields[1]+"VALUES(?,?)");
+                    "INSERT INTO "+tabla.TABLE_NAME+" ( "+tabla.fields[0]+" , "+tabla.fields[1]+" ) "+" VALUES(?,?)");
             preparedStatement.setString(1, _new.getNombreCategoriaProducto());
             preparedStatement.setString(2, _new.getDescripcionCategoriaProducto());
         }
@@ -77,10 +78,11 @@ public class CategoriaProductoDAO extends BaseDao<CategoriaProducto>{
     PreparedStatement getUpdateStatement(Connection con, CategoriaProducto _new) {
         PreparedStatement preparedStatement = null;
         try{
-            preparedStatement = con.prepareStatement("UPDATE"+tabla.TABLE_NAME+"SET"+tabla.fields[0]+"=?"+tabla.fields[1]+"=?"
-                    +"WHERE"+tabla.PRIMARY_KEY+"=?");
+            preparedStatement = con.prepareStatement("UPDATE "+tabla.TABLE_NAME+" SET "+tabla.fields[0]+" = ?, "+tabla.fields[1]+" = ?"
+                    +" WHERE "+tabla.PRIMARY_KEY+" = ? ");
              preparedStatement.setString(1, _new.getNombreCategoriaProducto());
             preparedStatement.setString(2, _new.getDescripcionCategoriaProducto());
+            preparedStatement.setInt(3, _new.getIdCategoriaProducto());
         }
         catch(SQLException error){
             error.printStackTrace();
@@ -92,7 +94,7 @@ public class CategoriaProductoDAO extends BaseDao<CategoriaProducto>{
     PreparedStatement getDeleteStatement(Connection con, CategoriaProducto deleteObject) {
         PreparedStatement preparedStatement = null;
         try{
-            preparedStatement=con.prepareStatement("DELETE FROM"+tabla.TABLE_NAME+"WHERE"+tabla.PRIMARY_KEY+"=?");
+            preparedStatement=con.prepareStatement("DELETE FROM "+tabla.TABLE_NAME+" WHERE "+tabla.PRIMARY_KEY+" = ?");
             preparedStatement.setInt(1, deleteObject.getIdCategoriaProducto());
         }
         catch(SQLException error){
