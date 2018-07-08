@@ -32,7 +32,7 @@ public class frmProducto extends javax.swing.JFrame {
         for(Marca marca : marcaDao.findAll()){
             ComboBoxMarca.addItem(marca.getNombreMarca());
         }
-        for(CategoriaProducto catPro:catProDao.findAll()){
+        for(CategoriaProducto catPro : catProDao.findAll()){
             ComboBoxCategoriaProducto.addItem(catPro.getNombreCategoriaProducto());
         }
         llenarTabla();
@@ -172,16 +172,11 @@ public class frmProducto extends javax.swing.JFrame {
 
         jLabel9.setText("ID");
 
-        txtId.setText("jTextField1");
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
             }
         });
-
-        ComboBoxMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        ComboBoxCategoriaProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel10.setText("Marca");
 
@@ -232,17 +227,27 @@ public class frmProducto extends javax.swing.JFrame {
                                         .addGap(87, 87, 87)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel4)
                                                 .addGap(27, 27, 27)
-                                                .addComponent(txtFechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(txtFechaCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel5))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(18, 18, 18)
                                         .addComponent(btnCategoriaProducto)
-                                        .addGap(0, 143, Short.MAX_VALUE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(114, 114, 114)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ComboBoxCategoriaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ComboBoxMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -261,20 +266,8 @@ public class frmProducto extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(btnEliminar)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ComboBoxMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel10))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ComboBoxCategoriaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel11))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(232, 232, 232))))
+                                .addComponent(jLabel9)
+                                .addGap(264, 550, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane2)))
@@ -360,11 +353,8 @@ public class frmProducto extends javax.swing.JFrame {
         producto.setDescripcionProducto(txtAreaDescripcion.getText());
         marca.setNombreMarca(ComboBoxMarca.getSelectedItem().toString());
         catPro.setNombreCategoriaProducto(ComboBoxCategoriaProducto.getSelectedItem().toString());
-        //producto.setFK_idMarca(marcaDao.findBy(marca,"Nombre_empresa").get(0).getIdMarca());//PARA FK ID MARCA
-        //producto.setFK_idMarca(marcaDao.findByIdMarca(marca).get(1).getIdMarca());
-        producto.setFK_idMarca(1);//PARA FK ID MARCA
-        //producto.setFK_idCategoriaProducto(catProDao.findByIdCategoriaProducto(catPro).get(1).getIdCategoriaProducto());
-        producto.setFK_idCategoriaProducto(1); //PARA FK ID CATEGORIA PRODUCTO
+        producto.setFK_idMarca(marcaDao.findByNombreMarca(marca).get(0).getIdMarca());
+        producto.setFK_idCategoriaProducto(catProDao.findByNombreCategoriaProducto(catPro).get(0).getIdCategoriaProducto());
         proDao.insert(producto);
         JOptionPane.showMessageDialog(null, "Datos ingresado con exitos");
         limpiar();
@@ -379,6 +369,7 @@ public class frmProducto extends javax.swing.JFrame {
         MarcaDAO marcaDao = new MarcaDAO();
         CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
         Marca marca = new Marca();
+        producto.setIdProducto(txtId.getText());
         producto.setNombreProducto(txtProducto.getText());
         producto.setCantidadProducto(Integer.parseInt(SpnCantidad.getValue().toString()));//Convirtiendo el tipo objeto del spinner
         producto.setPrecioCompra(Double.parseDouble(txtPrecioCompra.getText().toString())); //Convirtiendo 
@@ -386,8 +377,11 @@ public class frmProducto extends javax.swing.JFrame {
         producto.setFechaIngresoProducto(txtFechaIngreso.getText());
         producto.setFechaCaducidadProducto(txtFechaCaducidad.getText());
         producto.setDescripcionProducto(txtAreaDescripcion.getText());
-        producto.setFK_idMarca(marcaDao.findBy(marca,"Nombre_empresa").get(0).getIdMarca());//PARA FK ID MARCA
-        producto.setFK_idCategoriaProducto(catProDao.findBy(catPro, "Nombre_empresa").get(0).getIdCategoriaProducto()); //PARA FK ID CATEGORIA PRODUCTO
+        marca.setNombreMarca(ComboBoxMarca.getSelectedItem().toString());
+        catPro.setNombreCategoriaProducto(ComboBoxCategoriaProducto.getSelectedItem().toString());
+        producto.setFK_idMarca(marcaDao.findByNombreMarca(marca).get(0).getIdMarca());
+        producto.setFK_idCategoriaProducto(catProDao.findByNombreCategoriaProducto(catPro).get(0).getIdCategoriaProducto());
+        
         proDao.update(producto);
         JOptionPane.showMessageDialog(null, "Datos actualizados con exito");
         limpiar();

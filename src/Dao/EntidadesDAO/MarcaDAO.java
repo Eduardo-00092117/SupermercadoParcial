@@ -17,8 +17,7 @@ import java.util.List;
  */
 public class MarcaDAO extends BaseDao<Marca>{
     public MarcaDAO(){
-        tabla = new DatosTabla("Marca","idMarca",
-                new String[]{"nombre_empresa","nombre_marca","descripcion","FK_idProveedor"}
+        tabla = new DatosTabla("Marca","idMarca", new String[]{"nombre_empresa","nombre_marca","descripcion","FK_idProveedor"}
         );
     }
         
@@ -40,7 +39,7 @@ public class MarcaDAO extends BaseDao<Marca>{
 
     @Override
     public PreparedStatement getSelectStatement(Connection con, Marca find, String by) {
-        String query = "SELECT * FROM "+tabla.TABLE_NAME+" WHERE "+by+"=?";//TENER CUIDADO CON EL WHERE
+        String query = "SELECT * FROM "+tabla.TABLE_NAME+" WHERE "+by+" = ?";//TENER CUIDADO CON EL WHERE
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = con.prepareStatement(query);
@@ -48,13 +47,13 @@ public class MarcaDAO extends BaseDao<Marca>{
                 preparedStatement.setInt(1, find.getIdMarca());
             }
             else if(by.equals(tabla.fields[0])){
-                preparedStatement.setString(1,"%"+find.getNombreEmpresa()+"%");
+                preparedStatement.setString(1,find.getNombreEmpresa());
             }
             else if(by.equals(tabla.fields[1])){
-                preparedStatement.setString(1,"%"+find.getNombreMarca()+"%");
+                preparedStatement.setString(1,find.getNombreMarca());
             }
             else if(by.equals(tabla.fields[2])){
-                preparedStatement.setString(1, "%"+find.getDescripcionMarca()+"%");
+                preparedStatement.setString(1, find.getDescripcionMarca());
             }
             else if(by.equals(tabla.fields[3])){
                 preparedStatement.setInt(1, find.getFk_idProveedor());

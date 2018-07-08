@@ -46,10 +46,10 @@ public class CategoriaProductoDAO extends BaseDao<CategoriaProducto>{
                 preparedStatement.setInt(1, find.getIdCategoriaProducto());
             }
             else if(by.equals(tabla.fields[0])){
-                preparedStatement.setString(1, "%"+find.getNombreCategoriaProducto()+"%");
+                preparedStatement.setString(1, find.getNombreCategoriaProducto());
             }
             else if(by.equals(tabla.fields[1])){
-                preparedStatement.setString(1, "%"+find.getDescripcionCategoriaProducto()+"%");
+                preparedStatement.setString(1, find.getDescripcionCategoriaProducto());
             }
             
         }

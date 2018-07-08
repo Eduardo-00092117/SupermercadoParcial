@@ -23,6 +23,10 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
     public frmCategoriaProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Producto");
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        llenarTabla();
     }
     public void limpiar(){
         txtNombre.setText("");
@@ -70,10 +74,7 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
 
         tableCategoriaProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "idCategoriaProducto", "Nombre", "Descripcion"
@@ -85,6 +86,10 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
             }
         });
         jScrollPane1.setViewportView(tableCategoriaProducto);
+        if (tableCategoriaProducto.getColumnModel().getColumnCount() > 0) {
+            tableCategoriaProducto.getColumnModel().getColumn(0).setMinWidth(0);
+            tableCategoriaProducto.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         jLabel1.setText("Nombre");
 
@@ -202,6 +207,7 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
         // TODO add your handling code here:
         CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
         CategoriaProducto catPro = new CategoriaProducto();
+        catPro.setIdCategoriaProducto(Integer.parseInt(txtId.getText()));
         catPro.setNombreCategoriaProducto(txtNombre.getText());
         catPro.setDescripcionCategoriaProducto(AreatxtDescripcion.getText());
         
@@ -224,9 +230,11 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
 
     private void tableCategoriaProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCategoriaProductoMouseClicked
         // TODO add your handling code here:
+        Integer id = (Integer) tableCategoriaProducto.getValueAt(tableCategoriaProducto.getSelectedRow(), 0);
         String nombre = (String) tableCategoriaProducto.getValueAt(tableCategoriaProducto.getSelectedRow(), 1);
         String descripcion = (String) tableCategoriaProducto.getValueAt(tableCategoriaProducto.getSelectedRow(), 2);
         
+        txtId.setText(String.valueOf(id)); 
         txtNombre.setText(nombre);
         AreatxtDescripcion.setText(descripcion);
     }//GEN-LAST:event_tableCategoriaProductoMouseClicked
