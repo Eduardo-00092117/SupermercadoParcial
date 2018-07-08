@@ -21,7 +21,7 @@ public class ProductoDAO extends BaseDao<Producto> {
     public ProductoDAO(){
         tabla = new DatosTabla(
         "Producto","idProducto", new String[]{"nombre_producto","cantidad_producto","precio_compra","precio_venta","fecha_ingreso",
-        "fecha_caducidad","descripcion producto","FK_idMarca","FK_idCategoriaProducto"}
+        "fecha_caducidad","descripcion_producto","FK_idMarca","FK_idCategoriaProducto"}
         );
     }
     @Override
@@ -29,11 +29,11 @@ public class ProductoDAO extends BaseDao<Producto> {
         //Creo el tipo objeto o sea la INSTANCIA
         Producto producto = new Producto();
         try{
-            producto.setIdProducto(resultSet.getInt(tabla.PRIMARY_KEY));
+            producto.setIdProducto(resultSet.getString(tabla.PRIMARY_KEY));
             producto.setNombreProducto(resultSet.getString(tabla.fields[0]));
             producto.setCantidadProducto(resultSet.getInt(tabla.fields[1]));
-            producto.setPrecioCompra(resultSet.getInt(tabla.fields[2]));
-            producto.setPrecioVenta(resultSet.getInt(tabla.fields[3]));
+            producto.setPrecioCompra(resultSet.getDouble(tabla.fields[2]));
+            producto.setPrecioVenta(resultSet.getDouble(tabla.fields[3]));
             producto.setFechaIngresoProducto(resultSet.getString(tabla.fields[4]));
             producto.setFechaCaducidadProducto(resultSet.getString(tabla.fields[5]));
             producto.setDescripcionProducto(resultSet.getString(tabla.fields[6]));
@@ -48,12 +48,12 @@ public class ProductoDAO extends BaseDao<Producto> {
 
     @Override
     PreparedStatement getSelectStatement(Connection con, Producto find, String by) {
-       String query = "SELECT * FROM "+tabla.TABLE_NAME+"WHERE"+by+"=?";
+       String query = "SELECT * FROM "+tabla.TABLE_NAME+" WHERE "+by+"=?";
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = con.prepareStatement(query);
             if(by.equals(tabla.PRIMARY_KEY)){
-                preparedStatement.setInt(1, find.getIdProducto());
+                preparedStatement.setString(1, find.getIdProducto());
             }
             else if(by.equals(tabla.fields[0])){
                 preparedStatement.setString(1, "%"+find.getNombreProducto()+"%");
@@ -99,19 +99,22 @@ public class ProductoDAO extends BaseDao<Producto> {
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement=con.prepareStatement(
-            "INSERT INTO"+ tabla.TABLE_NAME+"("+tabla.fields[0]+","+tabla.fields[1]+","+tabla.fields[2]+","+tabla.fields[3]
-                    +","+tabla.fields[4]+","+tabla.fields[5]+","+tabla.fields[6]+","+tabla.fields[7]+","+tabla.fields[8]+")"
-                    +"VALUES(?,?,?,?,?,?,?,?,?)"  
+            "INSERT INTO "+ tabla.TABLE_NAME+" ( "+tabla.PRIMARY_KEY+" , "+tabla.fields[0]+" , "+tabla.fields[1]+" , "+tabla.fields[2]+" , "+tabla.fields[3]
+                    +" , "+tabla.fields[4]+" , "+tabla.fields[5]+" , "+tabla.fields[6]+" , "+tabla.fields[7]+" , "+tabla.fields[8]
+                    +")" +"VALUES(?,?,?,?,?,?,?,?,?,?)"  
             );
-            preparedStatement.setString(1, _new.getNombreProducto());
-            preparedStatement.setInt(2, _new.getCantidadProducto());
-            preparedStatement.setDouble(3, _new.getPrecioCompra());
-            preparedStatement.setDouble(4, _new.getPrecioVenta());
-            preparedStatement.setString(5, _new.getFechaIngresoProducto());
-            preparedStatement.setString(6, _new.getFechaCaducidadProducto());
-            preparedStatement.setString(7, _new.getDescripcionProducto());
-            preparedStatement.setInt(8, _new.getFK_idMarca());
-            preparedStatement.setInt(9, _new.getFK_idCategoriaProducto());
+            //9
+            
+            preparedStatement.setString(1, _new.getIdProducto());
+            preparedStatement.setString(2, _new.getNombreProducto());
+            preparedStatement.setInt(3, _new.getCantidadProducto());
+            preparedStatement.setDouble(4, _new.getPrecioCompra());
+            preparedStatement.setDouble(5, _new.getPrecioVenta());
+            preparedStatement.setString(6, _new.getFechaIngresoProducto());
+            preparedStatement.setString(7, _new.getFechaCaducidadProducto());
+            preparedStatement.setString(8, _new.getDescripcionProducto());
+            preparedStatement.setInt(9, _new.getFK_idMarca());
+            preparedStatement.setInt(10, _new.getFK_idCategoriaProducto());
         }
         catch(SQLException error){
             error.printStackTrace();
@@ -124,10 +127,11 @@ public class ProductoDAO extends BaseDao<Producto> {
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement=con.prepareStatement(
-                    "UPDATE"+tabla.TABLE_NAME+"SET"+tabla.fields[0]+"=?"+tabla.fields[1]+"=?"+tabla.fields[2]+"=?"+tabla.fields[3]
-            +"=?"+tabla.fields[4]+"=?"+tabla.fields[5]+"=?"+tabla.fields[6]+"=?"+tabla.fields[7]+"=?"+tabla.fields[8]+"=?"
-                            +tabla.fields[9]+"=? WHERE"+tabla.PRIMARY_KEY   + "=?"
+                    "UPDATE "+tabla.TABLE_NAME+" SET "+tabla.fields[0]+" = ?,"+tabla.fields[1]+" = ?,"+tabla.fields[2]+"= ?,"+tabla.fields[3]
+            +" = ?,"+tabla.fields[4]+" = ?,"+tabla.fields[5]+" = ?,"+tabla.fields[6]+" = ?,"+tabla.fields[7]+" = ?,"+tabla.fields[8]+" = ?"
+                            +" WHERE "+tabla.PRIMARY_KEY   + " = ?"
             );
+            
             preparedStatement.setString(1, _new.getNombreProducto());
             preparedStatement.setInt(2, _new.getCantidadProducto());
             preparedStatement.setDouble(3, _new.getPrecioCompra());
@@ -137,6 +141,7 @@ public class ProductoDAO extends BaseDao<Producto> {
             preparedStatement.setString(7, _new.getDescripcionProducto());
             preparedStatement.setInt(8, _new.getFK_idMarca());
             preparedStatement.setInt(9, _new.getFK_idCategoriaProducto());
+            preparedStatement.setString(10, _new.getIdProducto());
         }
         catch(SQLException error){
             error.printStackTrace();
@@ -149,8 +154,8 @@ public class ProductoDAO extends BaseDao<Producto> {
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = con.prepareStatement(
-                    "DELETE FROM"+tabla.TABLE_NAME+"WHERE"+tabla.PRIMARY_KEY+"=?");
-            preparedStatement.setInt(1, deleteObject.getIdProducto());
+                    "DELETE FROM "+tabla.TABLE_NAME+" WHERE "+tabla.PRIMARY_KEY+" = ?");
+            preparedStatement.setString(1, deleteObject.getIdProducto());
         }
         catch(SQLException error){
             error.printStackTrace();
