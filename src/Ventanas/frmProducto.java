@@ -12,6 +12,7 @@ import Entidades.CategoriaProducto;
 import Entidades.Marca;
 import Entidades.Producto;
 import Entidades.Proveedor;
+import Ventanas.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -83,6 +84,8 @@ public class frmProducto extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         btnCategoriaProducto = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        btnRegresar = new javax.swing.JMenu();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -190,6 +193,16 @@ public class frmProducto extends javax.swing.JFrame {
                 btnCategoriaProductoActionPerformed(evt);
             }
         });
+
+        btnRegresar.setText("Regresar");
+        btnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegresarMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(btnRegresar);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -424,6 +437,13 @@ public class frmProducto extends javax.swing.JFrame {
         txtFechaCaducidad.setText(fechaCaducidad);
         txtAreaDescripcion.setText(descripcionProducto);
     }//GEN-LAST:event_tableProductoMouseClicked
+
+    private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarMouseClicked
+        // TODO add your handling code here:
+        frmMenuGerente frm = new  frmMenuGerente();
+        frm.show();
+        this.hide();
+    }//GEN-LAST:event_btnRegresarMouseClicked
     public void limpiar(){
         txtProducto.setText("");
         txtPrecioVenta.setText("");
@@ -505,6 +525,7 @@ public class frmProducto extends javax.swing.JFrame {
     private javax.swing.JButton btnCategoriaProducto;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JMenu btnRegresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -518,6 +539,7 @@ public class frmProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
