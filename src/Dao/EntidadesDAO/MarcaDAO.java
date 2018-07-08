@@ -24,23 +24,23 @@ public class MarcaDAO extends BaseDao<Marca>{
         
     @Override
     public Marca mapaObjeto(ResultSet resultSet) {
-        Marca mar = new Marca();
+        Marca marca = new Marca();
         try{
-            mar.setIdMarca(resultSet.getInt(tabla.PRIMARY_KEY));
-            mar.setNombreEmpresa(resultSet.getString(tabla.fields[0]));
-            mar.setNombreMarca(resultSet.getString(tabla.fields[1]));
-            mar.setDescripcionMarca(resultSet.getString(tabla.fields[2]));
-            mar.setFk_idProveedor(resultSet.getInt(tabla.fields[3]));
+            marca.setIdMarca(resultSet.getInt(tabla.PRIMARY_KEY));
+            marca.setNombreEmpresa(resultSet.getString(tabla.fields[0]));
+            marca.setNombreMarca(resultSet.getString(tabla.fields[1]));
+            marca.setDescripcionMarca(resultSet.getString(tabla.fields[2]));
+            marca.setFk_idProveedor(resultSet.getInt(tabla.fields[3]));
         }
         catch(SQLException error){
             error.printStackTrace();
         }
-        return mar;
+        return marca;
     }
 
     @Override
     public PreparedStatement getSelectStatement(Connection con, Marca find, String by) {
-        String query = "SELECT * FROM "+tabla.TABLE_NAME+"WHERE"+by+"=?";
+        String query = "SELECT * FROM "+tabla.TABLE_NAME+" WHERE "+by+"=?";//TENER CUIDADO CON EL WHERE
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = con.prepareStatement(query);
