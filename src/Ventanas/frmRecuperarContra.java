@@ -5,20 +5,13 @@
  */
 package Ventanas;
 
+import Clases.Correo;
 import Dao.EntidadesDAO.*;
 import Entidades.*;
 import java.awt.Event;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import java.util.Properties;
 import java.util.Random;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.swing.InputMap;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
@@ -28,41 +21,6 @@ import javax.swing.KeyStroke;
  * @author EduadoAlberto
  */
 public class frmRecuperarContra extends javax.swing.JDialog {
-
-    String mensaje = "";
-    String To = "";
-    String Subject = "";
-
-    public void SendMail() {
-        Properties props = new Properties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
-
-        Session session = Session.getInstance(props,
-                new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("lopezeduardo220@gmail.com", "proyectoexpo");
-            }
-        });
-
-        try {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("lopezeduardo220@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(To));
-            message.setSubject(Subject);
-            message.setText(mensaje);
-
-            Transport.send(message);
-            JOptionPane.showMessageDialog(this, "Su mensaje ha sido enviado");
-
-        } catch (MessagingException e) {
-            JOptionPane.showMessageDialog(this, "Compruebe su conexion a internet");
-            throw new RuntimeException(e);
-        }
-    }
 
     public frmRecuperarContra(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -153,6 +111,8 @@ public class frmRecuperarContra extends javax.swing.JDialog {
         EmpleadoDAO emp = new EmpleadoDAO();
         Empleado empd = new Empleado();
         empd.setCorreoEmpleado(txtcorreo.getText()); 
+        Correo correo = new Correo();
+        String mensaje, To, Subject;
         if (!txtcorreo.getText().isEmpty()) {
             if (!emp.findBy(empd, "correo").isEmpty()) {
                 Random rnd = new Random();
@@ -160,7 +120,7 @@ public class frmRecuperarContra extends javax.swing.JDialog {
                 mensaje = "El codigo de confirmacion es " + codigo2;
                 To = txtcorreo.getText();
                 Subject = "Codigo de confirmacion (SOY LA VERGA xD)";
-                SendMail();
+                correo.SendMail(mensaje, To, Subject);
                 this.hide();
                 frmRecuperarContra2 frm = new frmRecuperarContra2(null, true, codigo2, txtcorreo.getText());
                 frm.show();

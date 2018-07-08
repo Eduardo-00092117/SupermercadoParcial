@@ -7,10 +7,11 @@ package Ventanas;
  */
 import Dao.EntidadesDAO.EmpleadoDAO;
 import Dao.EntidadesDAO.UsuarioDAO;
-import static Encriptacion.Encriptacion.encriptar;
+import static Clases.Encriptacion.encriptar;
 import Entidades.*;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author Diego
@@ -22,8 +23,8 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
-        this.setTitle("Iniciar Sesion"); 
-        this.setResizable(false); 
+        this.setTitle("Iniciar Sesion");
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
 
@@ -40,12 +41,14 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         btnSesion = new javax.swing.JButton();
         txtContrasena = new javax.swing.JPasswordField();
         txtRecuperacion = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Iniciar Sesión"));
 
         jLabel1.setText("Usuario:");
 
@@ -56,9 +59,6 @@ public class frmLogin extends javax.swing.JFrame {
                 txtUsuarioKeyPressed(evt);
             }
         });
-
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
-        jLabel3.setText("SEVOZ");
 
         btnSesion.setText("Iniciar Sesión");
         btnSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -86,34 +86,31 @@ public class frmLogin extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRecuperacion)
-                            .addComponent(jLabel3))))
-                .addContainerGap(28, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSesion)
-                .addGap(112, 112, 112))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel2))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(73, 73, 73)
+                            .addComponent(txtRecuperacion)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSesion)
+                        .addGap(84, 84, 84)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -125,67 +122,100 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(btnSesion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtRecuperacion)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(29, 29, 29)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 47, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void accionclik(){
+    public void accionclik() {
         Usuario used = new Usuario();
         UsuarioDAO use = new UsuarioDAO();
         EmpleadoDAO emp = new EmpleadoDAO();
         Empleado empd = new Empleado();
         used.setUsuario(txtUsuario.getText());
         used.setPass(encriptar(txtContrasena.getText()));
-        
-        if(!use.findBy(used, "usuario").isEmpty()){
-            if(!use.findBy(used, "pass").isEmpty()){
+
+        int i;
+        String palabra = "";
+        for (i = 0; i < txtUsuario.getText().length(); i++) {
+            if (txtUsuario.getText().charAt(i) == '@') {
+                break;
+            }
+            palabra = palabra + txtUsuario.getText().charAt(i);
+        }
+
+        if (!use.findBy(used, "usuario").isEmpty()) {
+            if (!use.findBy(used, "pass").isEmpty()) {
                 empd.setIdEmpleado(use.findBy(used, "usuario").get(0).getFK_idEmpleado());
                 UsuarioDAO.tipoUsuario = emp.findBy(empd, "idEmpleado").get(0).getFk_idCargo();
-                frmMenuGerente frm = new frmMenuGerente();
-                frm.show();
+                UsuarioDAO.idEmpleado = empd.getIdEmpleado();
+                UsuarioDAO.idUsuario = use.findBy(used, "usuario").get(0).getIdUsuario();
+                if (palabra.equals(txtContrasena.getText())) {
+                    frmCambiarContraInicial frm = new frmCambiarContraInicial();
+                    frm.show();
+                } else {
+                    if (UsuarioDAO.tipoUsuario == 2) {
+                        frmMenuGerente frm = new frmMenuGerente();
+                        frm.show();
+                    } else if(UsuarioDAO.tipoUsuario == 1){
+                        JOptionPane.showMessageDialog(null, "Formulario Cajero!!");
+                    }
+                }
                 this.hide();
-            } else{
+            } else {
                 JOptionPane.showMessageDialog(null, "El usuario y/o contraseña son incorrectas!");
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "El usuario y/o contraseña son incorrectas!");
         }
     }
-    
+
     private void btnSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSesionActionPerformed
         accionclik();
     }//GEN-LAST:event_btnSesionActionPerformed
 
     private void txtRecuperacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtRecuperacionMouseClicked
-        frmRecuperarContra frm = new frmRecuperarContra(null, true);  
-        frmRecuperarContra.setDefaultLookAndFeelDecorated(true); 
+        frmRecuperarContra frm = new frmRecuperarContra(null, true);
+        frmRecuperarContra.setDefaultLookAndFeelDecorated(false);
         frm.show();
     }//GEN-LAST:event_txtRecuperacionMouseClicked
 
     private void txtContrasenaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            accionclik();     
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            accionclik();
         }
     }//GEN-LAST:event_txtContrasenaKeyPressed
 
     private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            accionclik();     
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            accionclik();
         }
     }//GEN-LAST:event_txtUsuarioKeyPressed
 
@@ -229,7 +259,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JButton btnSesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JLabel txtRecuperacion;

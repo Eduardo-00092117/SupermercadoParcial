@@ -37,6 +37,16 @@ public class Cargo {
     public void setDescripcionCargo(String descripcionCargo) {
         this.descripcionCargo = descripcionCargo;
     }
+
+    public boolean isAccesso() {
+        return accesso;
+    }
+
+    public void setAccesso(boolean accesso) {
+        this.accesso = accesso;
+    }
+    
     private int idCargo;
     private String nombreCargo, descripcionCargo;
+    boolean accesso;
 }

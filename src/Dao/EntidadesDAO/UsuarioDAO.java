@@ -20,6 +20,8 @@ import java.sql.SQLException;
 public class UsuarioDAO extends BaseDao<Usuario> { //<Proveedor> es el tipo de variable, en este caso es de tipo la clase Proveedor
 
     public static int tipoUsuario;
+    public static int idUsuario;
+    public static int idEmpleado;
     
     public UsuarioDAO() {
         tabla = new DatosTabla(
@@ -70,19 +72,11 @@ public class UsuarioDAO extends BaseDao<Usuario> { //<Proveedor> es el tipo de v
         try {
             preparedStatement = con.prepareStatement(
                     "INSERT INTO " + tabla.TABLE_NAME
-                    + "(" + tabla.fields[0] + "," + tabla.fields[1] + "," + tabla.fields[2] + ", " + tabla.fields[3] + ", " + tabla.fields[4] + ", " + tabla.fields[5]
-                    + ", " + tabla.fields[6] + ", " + tabla.fields[7] + ", " + tabla.fields[8] + ")"
-                    + " VALUES(?,?,?,?,?,?,?,?,?)");
+                    + "(" + tabla.fields[0] + "," + tabla.fields[1] + "," + tabla.fields[2] +")"
+                    + " VALUES(?,?,(SELECT MAX(idEmpleado) FROM Empleado))");
 
-            /*preparedStatement.setString(1, _new.getNombreEmpleado());
-            preparedStatement.setString(2, _new.getApellidoEmpleado());
-            preparedStatement.setString(3, _new.getFechaEmpleado());
-            preparedStatement.setString(4, _new.getDuiEmpleado());
-            preparedStatement.setString(5, _new.getNitEmpleado());
-            preparedStatement.setString(6, _new.getCorreoEmpleado());
-            preparedStatement.setDouble(7, _new.getSueldoEmpleado());
-            preparedStatement.setInt(8, _new.getFk_idEstado());
-            preparedStatement.setInt(9, _new.getFk_idCargo());*/
+            preparedStatement.setString(1, _new.getUsuario());
+            preparedStatement.setString(2, _new.getPass());
 
         } catch (SQLException e) {
             e.printStackTrace();

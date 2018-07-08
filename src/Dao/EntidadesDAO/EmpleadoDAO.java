@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 /**
  *
@@ -115,7 +114,7 @@ public class EmpleadoDAO extends BaseDao<Empleado> { //<Proveedor> es el tipo de
             preparedStatement = con.prepareStatement(
                     "UPDATE " + tabla.TABLE_NAME
                     + " SET " + tabla.fields[0] + " = ?, " + tabla.fields[1] + " = ?, " + tabla.fields[2] + " = ?, "
-                    + tabla.fields[3] + " = ?, " + tabla.fields[4] + " = ?, " + tabla.fields[5] + " = ? "
+                    + tabla.fields[3] + " = ?, " + tabla.fields[4] + " = ?, " + tabla.fields[5] + " = ?, "
                     + tabla.fields[6] + " = ?, " + tabla.fields[7] + " = ?, " + tabla.fields[8] + " = ? WHERE " + tabla.PRIMARY_KEY + " = ?");
 
             preparedStatement.setString(1, _new.getNombreEmpleado());

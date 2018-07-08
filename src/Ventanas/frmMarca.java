@@ -28,25 +28,27 @@ public class frmMarca extends javax.swing.JFrame {
         }
         llenarTabla();
         txtId.setVisible(false);
-        this.setTitle("Marca"); 
-        this.setResizable(false); 
+        this.setTitle("Marca");
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
-    
+
     //Llena la tabla y a la vez se ocupa para actualizar la tabla.
     public void llenarTabla() {
         //Se ocupa para borrar los datos de la tabla.
         DefaultTableModel modelos = (DefaultTableModel) tblTabla.getModel();
-        while(modelos.getRowCount()>0)modelos.removeRow(0);
-        
+        while (modelos.getRowCount() > 0) {
+            modelos.removeRow(0);
+        }
+
         //Se comienza a llenar la tabla.
         MarcaDAO marc = new MarcaDAO();
         ProveedorDAO pro = new ProveedorDAO();
         Proveedor prod = new Proveedor();
-        for(Marca marca : marc.findAll()){
-            DefaultTableModel modelo = (DefaultTableModel)tblTabla.getModel();
-              modelo.addRow(new Object[10]);
-              int nuevaFila = modelo.getRowCount()-1;
+        for (Marca marca : marc.findAll()) {
+            DefaultTableModel modelo = (DefaultTableModel) tblTabla.getModel();
+            modelo.addRow(new Object[10]);
+            int nuevaFila = modelo.getRowCount() - 1;
             tblTabla.setValueAt(marca.getIdMarca(), nuevaFila, 0);
             tblTabla.setValueAt(marca.getNombreEmpresa(), nuevaFila, 1);
             tblTabla.setValueAt(marca.getNombreMarca(), nuevaFila, 2);
@@ -283,7 +285,7 @@ public class frmMarca extends javax.swing.JFrame {
 
         marc.insert(mard);
         JOptionPane.showMessageDialog(null, "Dato ingresado con Exito!");
-        
+
         limpiar();
         llenarTabla();
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -298,10 +300,10 @@ public class frmMarca extends javax.swing.JFrame {
 
     private void tblTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTablaMouseClicked
         Integer id = (Integer) tblTabla.getValueAt(tblTabla.getSelectedRow(), 0);
-        String empresa = (String) tblTabla.getValueAt(tblTabla.getSelectedRow(),1);
-        String marca = (String) tblTabla.getValueAt(tblTabla.getSelectedRow(),2);
-        String descripcion = (String) tblTabla.getValueAt(tblTabla.getSelectedRow(),3);
-        String proveedor = (String) tblTabla.getValueAt(tblTabla.getSelectedRow(),4);
+        String empresa = (String) tblTabla.getValueAt(tblTabla.getSelectedRow(), 1);
+        String marca = (String) tblTabla.getValueAt(tblTabla.getSelectedRow(), 2);
+        String descripcion = (String) tblTabla.getValueAt(tblTabla.getSelectedRow(), 3);
+        String proveedor = (String) tblTabla.getValueAt(tblTabla.getSelectedRow(), 4);
         txtId.setText(Integer.toString(id));
         txtEmpresa.setText((empresa));
         txtMarca.setText((marca));
@@ -320,10 +322,10 @@ public class frmMarca extends javax.swing.JFrame {
         mard.setIdMarca(Integer.parseInt(txtId.getText()));
         prod.setNombreEmpresa(cmbProveedor.getSelectedItem().toString());
         mard.setFk_idProveedor(pro.findBy(prod, "nombre_empresa").get(0).getIdProveedor());
-        
+
         marc.update(mard);
         JOptionPane.showMessageDialog(null, "Dato modificado con Exito!");
-   
+
         limpiar();
         llenarTabla();
     }//GEN-LAST:event_btnModificarActionPerformed
@@ -334,9 +336,9 @@ public class frmMarca extends javax.swing.JFrame {
         mard.setIdMarca(Integer.parseInt(txtId.getText()));
 
         marc.delete(mard);
-        
+
         JOptionPane.showMessageDialog(null, "Dato borrado con Exito!");
-        
+
         limpiar();
         llenarTabla();
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -351,14 +353,14 @@ public class frmMarca extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_jMenu1MouseClicked
 
-    public void limpiar(){
+    public void limpiar() {
         txtDescripcion.setText("");
         txtEmpresa.setText("");
         txtMarca.setText("");
         txtId.setText("");
-        cmbProveedor.setSelectedIndex(0); 
+        cmbProveedor.setSelectedIndex(0);
     }
-    
+
     /**
      * @param args the command line arguments
      */

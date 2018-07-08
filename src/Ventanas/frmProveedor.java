@@ -151,6 +151,8 @@ public class frmProveedor extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblTabla);
         if (tblTabla.getColumnModel().getColumnCount() > 0) {
+            tblTabla.getColumnModel().getColumn(0).setMinWidth(0);
+            tblTabla.getColumnModel().getColumn(0).setMaxWidth(0);
             tblTabla.getColumnModel().getColumn(1).setResizable(false);
             tblTabla.getColumnModel().getColumn(2).setResizable(false);
             tblTabla.getColumnModel().getColumn(3).setResizable(false);

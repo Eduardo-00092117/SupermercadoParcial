@@ -7,7 +7,7 @@ package Ventanas;
 
 import Dao.EntidadesDAO.EmpleadoDAO;
 import Dao.EntidadesDAO.UsuarioDAO;
-import static Encriptacion.Encriptacion.encriptar;
+import static Clases.Encriptacion.encriptar;
 import Entidades.Empleado;
 import Entidades.Usuario;
 import java.awt.Event;
