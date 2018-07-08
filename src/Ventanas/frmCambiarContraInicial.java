@@ -48,6 +48,7 @@ public class frmCambiarContraInicial extends javax.swing.JFrame {
 
         jLabel1.setText("Antes de empezar a usar el sistema debe de cambiar su contraseña (Obligatorio)");
 
+        btnCambiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434607676_system-software-update.png"))); // NOI18N
         btnCambiar.setText("Cambiar");
         btnCambiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,6 +56,7 @@ public class frmCambiarContraInicial extends javax.swing.JFrame {
             }
         });
 
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434853539_go-back.png"))); // NOI18N
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
