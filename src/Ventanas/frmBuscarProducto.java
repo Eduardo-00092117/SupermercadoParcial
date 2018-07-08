@@ -5,8 +5,15 @@
  */
 package Ventanas;
 
+import Dao.EntidadesDAO.CategoriaProductoDAO;
+import Dao.EntidadesDAO.MarcaDAO;
 import Dao.EntidadesDAO.ProductoDAO;
+import Entidades.CategoriaProducto;
+import Entidades.Marca;
 import Entidades.Producto;
+import java.awt.event.KeyEvent;
+import javax.swing.ButtonGroup;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +26,10 @@ public class frmBuscarProducto extends javax.swing.JFrame {
      */
     public frmBuscarProducto() {
         initComponents();
+        this.setTitle("Buscar Producto");
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        llenarTabla();
     }
 
     /**
@@ -30,30 +41,26 @@ public class frmBuscarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         txtBuscador = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableBuscarProducto = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Codigo", "Nombre", "Marca", "Categoria"
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                formKeyReleased(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
 
         jLabel1.setText("Buscar Producto ");
+
+        txtBuscador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBuscadorKeyPressed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -62,31 +69,37 @@ public class frmBuscarProducto extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setText("Marca");
+        tableBuscarProducto.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jRadioButton2.setText("Categoria Producto");
+            },
+            new String [] {
+                "Codigo", "NombreProducto", "CantidadProducto", "PrecioCompra", "PrecioVenta", "FechaIngreso", "FechaCaducidad", "DescripcionProducto", "Marca", "Categoria"
+            }
+        ));
+        tableBuscarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableBuscarProductoMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tableBuscarProducto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton2))
-                    .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1112, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,25 +110,94 @@ public class frmBuscarProducto extends javax.swing.JFrame {
                     .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        ProductoDAO proDao = new ProductoDAO();
-        Producto producto = new Producto();
-        producto.getIdProducto();
-        proDao.findBy(producto, "id");
+        llenarTablaFiltro(); 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void tableBuscarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBuscarProductoMouseClicked
+
+    }//GEN-LAST:event_tableBuscarProductoMouseClicked
+
+    private void txtBuscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            llenarTablaFiltro();
+        }
+    }//GEN-LAST:event_txtBuscadorKeyPressed
+
+    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyReleased
+
+    public void llenarTabla(){
+        //Se ocupa para borrar los datos de la tabla.
+        DefaultTableModel modelos = (DefaultTableModel) tableBuscarProducto.getModel();
+        while(modelos.getRowCount()>0)modelos.removeRow(0);
+        MarcaDAO marcaDao = new MarcaDAO();
+        CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
+        ProductoDAO proDao = new ProductoDAO();
+        Marca marca = new Marca();
+        CategoriaProducto catPro = new CategoriaProducto();
+         for(Producto producto : proDao.findAll()){
+             DefaultTableModel modelo = (DefaultTableModel) tableBuscarProducto.getModel();
+             modelo.addRow(new Object[10]);
+              int nuevaFila = modelo.getRowCount()-1;
+              tableBuscarProducto.setValueAt(producto.getIdProducto(), nuevaFila, 0);
+              tableBuscarProducto.setValueAt(producto.getNombreProducto(), nuevaFila, 1);
+              tableBuscarProducto.setValueAt(producto.getCantidadProducto(), nuevaFila, 2);
+              tableBuscarProducto.setValueAt(producto.getPrecioCompra(), nuevaFila, 3);
+              tableBuscarProducto.setValueAt(producto.getPrecioVenta(), nuevaFila, 4);
+              tableBuscarProducto.setValueAt(producto.getFechaIngresoProducto(), nuevaFila, 5);
+              tableBuscarProducto.setValueAt(producto.getFechaCaducidadProducto(), nuevaFila, 6);
+              tableBuscarProducto.setValueAt(producto.getDescripcionProducto(), nuevaFila, 7);
+              marca.setIdMarca(producto.getFK_idMarca());
+              tableBuscarProducto.setValueAt(marcaDao.findBy(marca, "idMarca").get(0).getNombreMarca(), nuevaFila, 8);//PARA FK ID MARCA
+              catPro.setIdCategoriaProducto(producto.getFK_idCategoriaProducto());
+              tableBuscarProducto.setValueAt(catProDao.findBy(catPro,"idCategoriaProducto").get(0).getNombreCategoriaProducto(), nuevaFila, 9);
+               //PARA FK ID CATEGORIA PRODUCTO
+              
+        }
+        
+    }
+    
+    public void llenarTablaFiltro(){
+        //Se ocupa para borrar los datos de la tabla.
+        DefaultTableModel modelos = (DefaultTableModel) tableBuscarProducto.getModel();
+        while(modelos.getRowCount()>0)modelos.removeRow(0);
+        MarcaDAO marcaDao = new MarcaDAO();
+        CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
+        ProductoDAO proDao = new ProductoDAO();
+        Producto pro = new Producto();
+        Marca marca = new Marca();
+        pro.setIdProducto(txtBuscador.getText());
+        CategoriaProducto catPro = new CategoriaProducto();
+         for(Producto producto : proDao.findByIdProducto(pro)){
+             DefaultTableModel modelo = (DefaultTableModel) tableBuscarProducto.getModel();
+             modelo.addRow(new Object[10]);
+              int nuevaFila = modelo.getRowCount()-1;
+              tableBuscarProducto.setValueAt(producto.getIdProducto(), nuevaFila, 0);
+              tableBuscarProducto.setValueAt(producto.getNombreProducto(), nuevaFila, 1);
+              tableBuscarProducto.setValueAt(producto.getCantidadProducto(), nuevaFila, 2);
+              tableBuscarProducto.setValueAt(producto.getPrecioCompra(), nuevaFila, 3);
+              tableBuscarProducto.setValueAt(producto.getPrecioVenta(), nuevaFila, 4);
+              tableBuscarProducto.setValueAt(producto.getFechaIngresoProducto(), nuevaFila, 5);
+              tableBuscarProducto.setValueAt(producto.getFechaCaducidadProducto(), nuevaFila, 6);
+              tableBuscarProducto.setValueAt(producto.getDescripcionProducto(), nuevaFila, 7);
+              marca.setIdMarca(producto.getFK_idMarca());
+              tableBuscarProducto.setValueAt(marcaDao.findBy(marca, "idMarca").get(0).getNombreMarca(), nuevaFila, 8);//PARA FK ID MARCA
+              catPro.setIdCategoriaProducto(producto.getFK_idCategoriaProducto());
+              tableBuscarProducto.setValueAt(catProDao.findBy(catPro,"idCategoriaProducto").get(0).getNombreCategoriaProducto(), nuevaFila, 9);
+               //PARA FK ID CATEGORIA PRODUCTO
+              
+        }
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -154,10 +236,8 @@ public class frmBuscarProducto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tableBuscarProducto;
     private javax.swing.JTextField txtBuscador;
     // End of variables declaration//GEN-END:variables
 }
