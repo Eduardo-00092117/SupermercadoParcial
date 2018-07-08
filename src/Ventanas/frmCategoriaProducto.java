@@ -63,6 +63,8 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
         btnModificar = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -112,6 +114,16 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
                 btnDeleteActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("Regresar");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -219,6 +231,13 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
         AreatxtDescripcion.setText(descripcion);
     }//GEN-LAST:event_tableCategoriaProductoMouseClicked
 
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        frmProducto frm = new frmProducto();
+        frm.show();
+        this.hide();
+    }//GEN-LAST:event_jMenu1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -269,6 +288,8 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
     private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableCategoriaProducto;
