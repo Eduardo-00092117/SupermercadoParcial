@@ -18,7 +18,7 @@ public class Proyecto {
         Empleado Demp = new Empleado();
         EmpleadoDAO Cemp = new EmpleadoDAO();
         
-        frmMenuGerente lo = new frmMenuGerente();
+        frmLogin lo = new frmLogin();
         lo.show();
     }
     
