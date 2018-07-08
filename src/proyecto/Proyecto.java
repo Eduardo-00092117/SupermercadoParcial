@@ -18,6 +18,8 @@ public class Proyecto {
         Empleado Demp = new Empleado();
         EmpleadoDAO Cemp = new EmpleadoDAO();
         
+        //frmCargando frm = new frmCargando();
+        //frm.show();
         frmMenuGerente lo = new frmMenuGerente();
         lo.show();
     }

@@ -49,37 +49,49 @@ public class frmMenuGerente extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Menu"));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434860743_tick.png"))); // NOI18N
         jButton1.setText("Empleados/Usuarios");
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434860743_tick.png"))); // NOI18N
         jButton2.setText("Productos");
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434860743_tick.png"))); // NOI18N
         jButton3.setText("Proveedores");
+        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434860743_tick.png"))); // NOI18N
         jButton4.setText("Marcas");
+        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434860743_tick.png"))); // NOI18N
         jButton5.setText("Facturación");
+        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434860743_tick.png"))); // NOI18N
         jButton6.setText("Inventario");
+        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -114,6 +126,7 @@ public class frmMenuGerente extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434854150_exit.png"))); // NOI18N
         jMenu1.setText("Cerrar Sesión");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -122,6 +135,7 @@ public class frmMenuGerente extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1435832333_diagram_v2-08.png"))); // NOI18N
         jMenu2.setText("Cambiar Contraseña");
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

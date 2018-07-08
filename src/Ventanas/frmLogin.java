@@ -56,6 +56,11 @@ public class frmLogin extends javax.swing.JFrame {
 
         jLabel2.setText("Contraseña:");
 
+        txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUsuarioMouseClicked(evt);
+            }
+        });
         txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUsuarioKeyPressed(evt);
@@ -220,6 +225,10 @@ public class frmLogin extends javax.swing.JFrame {
             accionclik();
         }
     }//GEN-LAST:event_txtUsuarioKeyPressed
+
+    private void txtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuarioMouseClicked
 
     /**
      * @param args the command line arguments

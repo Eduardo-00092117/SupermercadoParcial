@@ -43,11 +43,7 @@ CREATE TABLE Proveedor(
 	url VARCHAR(200) NOT NULL
 )
 
-CREATE TABLE CategoriaMarca(
-	idCategoriaMarca INT CONSTRAINT PK_idCategoriaMarca PRIMARY KEY,
-	nombre VARCHAR(100) NOT NULL UNIQUE,
-	descripcion VARCHAR(100)
-)
+
 
 CREATE TABLE Marca(
 	idMarca INT IDENTITY CONSTRAINT PK_idMarca PRIMARY KEY,
@@ -57,14 +53,8 @@ CREATE TABLE Marca(
 	FK_idProveedor INT NOT NULL CONSTRAINT FK_idProveedor REFERENCES Proveedor(idProveedor)
 )
 
-CREATE TABLE MarcaxCategoria(
-	PKFK_idMarca INT NOT NULL,
-	PKFK_idCategoria INT NOT NULL
-)
 
-ALTER TABLE MarcaxCategoria ADD CONSTRAINT PKFK_idMarcaxProveedor PRIMARY KEY(PKFK_idMarca,PKFK_idCategoria)
-ALTER TABLE MarcaxCategoria ADD CONSTRAINT PKFK_idMarca FOREIGN KEY (PKFK_idMarca) REFERENCES Marca(idMarca)
-ALTER TABLE MarcaxCategoria ADD CONSTRAINT PKFK_idCategoria FOREIGN KEY(PKFK_idCategoria) REFERENCES CategoriaMarca(idCategoriaMarca)
+
 
 CREATE TABLE CategoriaProducto(
 	idCategoriaProducto INT IDENTITY CONSTRAINT PK_idProductoCategoria PRIMARY KEY,
@@ -101,5 +91,45 @@ CREATE TABLE DetalleFacturacion(
 ALTER TABLE DetalleFacturacion ADD CONSTRAINT PKFK_idFacturacionxDetalle PRIMARY KEY(PKFK_idFacturacion, PKFK_idProducto)
 ALTER TABLE DetalleFacturacion ADD CONSTRAINT PKFK_idFacturacion FOREIGN KEY(PKFK_idFacturacion) REFERENCES Facturacion(idFactura)
 ALTER TABLE DetalleFacturacion ADD CONSTRAINT PKFK_idproducto FOREIGN KEY(PKFK_idProducto) REFERENCES Producto(idProducto)
+ALTER TABLE Cargo add acceso tinyint
 
-SELECT * FROM Proveedor
+
+------------------------ INSERTANDO DATOS PARA TABLA CARGO
+SELECT *from cargo
+
+INSERT INTO cargo values('Cajero',null,1)
+INSERT INTO cargo values('Gerente',null,1)
+----------------------- INSERTANDO DATOS PARA TABLA ESTADO EMPLEADO
+SELECT * FROM EstadoEmpleado
+
+INSERT INTO EstadoEmpleado VALUES('Disponible')
+INSERT INTO EstadoEmpleado VALUES('Inhabilitado')
+INSERT INTO EstadoEmpleado VALUES('Despedido')
+
+----------------------- INSERTANDO DATOS PARA TABLA CATEGORIA PRODUCTO
+SELECT * FROM CategoriaProducto
+
+INSERT INTO CategoriaProducto VALUES('Limpieza',null)
+INSERT INTO CategoriaProducto VALUES('Galletas',null)
+INSERT INTO CategoriaProducto VALUES('Bebidas',null)
+
+----------------------- INSERTANDO DATOS PARA TABLA PROVEEDOR
+SELECT * FROM PROVEEDOR 
+
+INSERT INTO Proveedor VALUES('Inc. Constancia','Donald Trump','83926428-2','7170-4019','www.Constancia.com')
+INSERT INTO Proveedor VALUES('Cleanex','Cristiano Ronaldo','93346412-7','7978-2483','www.Cleanex.com')
+INSERT INTO Proveedor VALUES('BocaDeli','Bill Gates','70345405-9','7023-2215','www.BocaDeli.com')
+
+----------------------- INSERTANDO DATOS PARA TABLA MARCA
+SELECT * FROM MARCA
+
+INSERT INTO MARCA VALUES('Inc. Constancia','Pilsener',null,1)
+INSERT INTO MARCA VALUES('Cleanex','Detergente',null,3)
+INSERT INTO MARCA VALUES('BocaDeli','Chiky',null,2)
+
+----------------------- INSERTANDO DATOS PARA TABLA PRODUCTO
+SELECT * FROM PRODUCTO
+
+INSERT INTO PRODUCTO VALUES('1','Pilsener',50,1.50,1.00,'08/07/2018','08/09/2018',null,1,3)
+INSERT INTO PRODUCTO VALUES('2','Detergente',72,0.15,0.25,'02/07/2018','08/12/2018',null,2,1)
+INSERT INTO PRODUCTO VALUES('3','Chiky',90,0.50,2.00,'05/07/2018','08/08/2018',null,3,2)
