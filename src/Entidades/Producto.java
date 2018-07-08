@@ -13,11 +13,11 @@ public class Producto {
     public Producto(){
         
     }
-    public int getIdProducto() {
+    public String getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
 
@@ -76,8 +76,8 @@ public class Producto {
     public void setPrecioVenta(double precioVenta) {
         this.precioVenta = precioVenta;
     }
-    private String  nombreProducto,descripcionProducto,fechaIngresoProducto,fechaCaducidadProducto;
-    private int  idProducto,cantidadProducto,FK_idMarca,FK_idCategoriaProducto;
+    private String  nombreProducto,descripcionProducto,fechaIngresoProducto,fechaCaducidadProducto,idProducto;
+    private int cantidadProducto,FK_idMarca,FK_idCategoriaProducto;
 
     public int getFK_idMarca() {
         return FK_idMarca;
