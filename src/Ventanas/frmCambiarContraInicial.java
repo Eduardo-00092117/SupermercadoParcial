@@ -24,6 +24,7 @@ public class frmCambiarContraInicial extends javax.swing.JFrame {
         this.setTitle("Cambiar Contraseña");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
     }
 
     /**

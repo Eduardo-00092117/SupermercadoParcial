@@ -19,6 +19,7 @@ public class frmMenuGerente extends javax.swing.JFrame {
         this.setTitle("Menu");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
     }
 
     /**

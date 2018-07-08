@@ -48,6 +48,7 @@ public class frmProducto extends javax.swing.JFrame {
         this.setTitle("Producto");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
 
     }
 

@@ -26,6 +26,7 @@ public class frmProveedor extends javax.swing.JFrame {
         this.setTitle("Proveedor");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
     }
 
     public void limpiar() {
