@@ -30,6 +30,7 @@ public class frmBuscarProducto extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         llenarTabla();
+         this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
     }
 
     /**
@@ -62,6 +63,7 @@ public class frmBuscarProducto extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434610269_old-edit-find.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,7 +112,7 @@ public class frmBuscarProducto extends javax.swing.JFrame {
                     .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
         );
 
