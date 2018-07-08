@@ -82,7 +82,7 @@ public class frmMarca extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
         txtId = new javax.swing.JTextField();
-        txtLimpiar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -168,10 +168,10 @@ public class frmMarca extends javax.swing.JFrame {
 
         txtId.setOpaque(false);
 
-        txtLimpiar.setText("Limpiar");
-        txtLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLimpiarActionPerformed(evt);
+                btnLimpiarActionPerformed(evt);
             }
         });
 
@@ -193,40 +193,39 @@ public class frmMarca extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jLabel6))
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txtLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(97, 97, 97)))
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38))))
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel6))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(97, 97, 97)))
+                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,8 +261,8 @@ public class frmMarca extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnEliminar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtLimpiar)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnLimpiar)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -272,22 +271,32 @@ public class frmMarca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        MarcaDAO marc = new MarcaDAO(); //Se instancia la clase para guardar los datos.
-        ProveedorDAO pro = new ProveedorDAO(); //Se instancia la clase para buscar el id del proveedor.
-        Proveedor prod = new Proveedor(); //Se instancia la clase para guardar los datos.
-        Marca mard = new Marca(); //Se instancia la clase para guardar los datos de la marca.
-        mard.setNombreEmpresa(txtEmpresa.getText());
-        mard.setDescripcionMarca(txtDescripcion.getText());
-        mard.setNombreMarca(txtMarca.getText());
-        //Se hace una busqueda del combobox para que pueda insertar el dato correcto
-        prod.setNombreEmpresa(cmbProveedor.getSelectedItem().toString());
-        mard.setFk_idProveedor(pro.findBy(prod, "nombre_empresa").get(0).getIdProveedor());
+        try {
+            if (!txtMarca.getText().isEmpty() && !txtDescripcion.getText().isEmpty()
+                    && !txtEmpresa.getText().isEmpty() && cmbProveedor.getSelectedIndex() > 0) {
+                MarcaDAO marc = new MarcaDAO(); //Se instancia la clase para guardar los datos.
+                ProveedorDAO pro = new ProveedorDAO(); //Se instancia la clase para buscar el id del proveedor.
+                Proveedor prod = new Proveedor(); //Se instancia la clase para guardar los datos.
+                Marca mard = new Marca(); //Se instancia la clase para guardar los datos de la marca.
+                mard.setNombreEmpresa(txtEmpresa.getText());
+                mard.setDescripcionMarca(txtDescripcion.getText());
+                mard.setNombreMarca(txtMarca.getText());
+                //Se hace una busqueda del combobox para que pueda insertar el dato correcto
+                prod.setNombreEmpresa(cmbProveedor.getSelectedItem().toString());
+                mard.setFk_idProveedor(pro.findBy(prod, "nombre_empresa").get(0).getIdProveedor());
 
-        marc.insert(mard);
-        JOptionPane.showMessageDialog(null, "Dato ingresado con Exito!");
+                marc.insert(mard);
+                JOptionPane.showMessageDialog(null, "Dato ingresado con Exito!");
 
-        limpiar();
-        llenarTabla();
+                limpiar();
+                llenarTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos!");
+            }
+        } catch (Exception e) {
+
+        }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -312,40 +321,58 @@ public class frmMarca extends javax.swing.JFrame {
     }//GEN-LAST:event_tblTablaMouseClicked
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        MarcaDAO marc = new MarcaDAO();
-        Marca mard = new Marca();
-        Proveedor prod = new Proveedor();
-        ProveedorDAO pro = new ProveedorDAO();
-        mard.setNombreEmpresa(txtEmpresa.getText());
-        mard.setDescripcionMarca(txtDescripcion.getText());
-        mard.setNombreMarca(txtMarca.getText());
-        mard.setIdMarca(Integer.parseInt(txtId.getText()));
-        prod.setNombreEmpresa(cmbProveedor.getSelectedItem().toString());
-        mard.setFk_idProveedor(pro.findBy(prod, "nombre_empresa").get(0).getIdProveedor());
+        try {
+            if (!txtMarca.getText().isEmpty() && !txtDescripcion.getText().isEmpty()
+                    && !txtEmpresa.getText().isEmpty() && cmbProveedor.getSelectedIndex() > 0) {
+                MarcaDAO marc = new MarcaDAO();
+                Marca mard = new Marca();
+                Proveedor prod = new Proveedor();
+                ProveedorDAO pro = new ProveedorDAO();
+                mard.setNombreEmpresa(txtEmpresa.getText());
+                mard.setDescripcionMarca(txtDescripcion.getText());
+                mard.setNombreMarca(txtMarca.getText());
+                mard.setIdMarca(Integer.parseInt(txtId.getText()));
+                prod.setNombreEmpresa(cmbProveedor.getSelectedItem().toString());
+                mard.setFk_idProveedor(pro.findBy(prod, "nombre_empresa").get(0).getIdProveedor());
 
-        marc.update(mard);
-        JOptionPane.showMessageDialog(null, "Dato modificado con Exito!");
+                marc.update(mard);
+                JOptionPane.showMessageDialog(null, "Dato modificado con Exito!");
 
-        limpiar();
-        llenarTabla();
+                limpiar();
+                llenarTabla();
+            } else{
+                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos!");
+            }
+        }catch(Exception e){
+            
+        }
+        
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        MarcaDAO marc = new MarcaDAO();
-        Marca mard = new Marca();
-        mard.setIdMarca(Integer.parseInt(txtId.getText()));
+        try{
+            if(!txtId.getText().isEmpty()){
+                MarcaDAO marc = new MarcaDAO();
+                Marca mard = new Marca();
+                mard.setIdMarca(Integer.parseInt(txtId.getText()));
 
-        marc.delete(mard);
+                marc.delete(mard);
 
-        JOptionPane.showMessageDialog(null, "Dato borrado con Exito!");
+                JOptionPane.showMessageDialog(null, "Dato borrado con Exito!");
 
-        limpiar();
-        llenarTabla();
+                limpiar();
+                llenarTabla();
+            }else{
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un dato!");
+            }
+        }catch(Exception e){
+            
+        }        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-    private void txtLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimpiarActionPerformed
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiar();
-    }//GEN-LAST:event_txtLimpiarActionPerformed
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
         frmMenuGerente menu = new frmMenuGerente();
@@ -399,6 +426,7 @@ public class frmMarca extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> cmbProveedor;
     private javax.swing.JLabel jLabel1;
@@ -413,7 +441,6 @@ public class frmMarca extends javax.swing.JFrame {
     private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtEmpresa;
     private javax.swing.JTextField txtId;
-    private javax.swing.JButton txtLimpiar;
     private javax.swing.JTextField txtMarca;
     // End of variables declaration//GEN-END:variables
 }

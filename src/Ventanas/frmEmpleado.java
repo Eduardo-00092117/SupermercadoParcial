@@ -16,6 +16,7 @@ import Entidades.Empleado;
 import Entidades.EstadoEmpleado;
 import Entidades.Usuario;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -84,10 +85,10 @@ public class frmEmpleado extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTabla = new javax.swing.JTable();
         panelUsuario1 = new javax.swing.JPanel();
-        txtUsuario1 = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        txtPass1 = new javax.swing.JPasswordField();
+        txtPass = new javax.swing.JPasswordField();
         btnEliminar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -305,7 +306,7 @@ public class frmEmpleado extends javax.swing.JFrame {
 
         panelUsuario1.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuario"));
 
-        txtUsuario1.setFocusable(false);
+        txtUsuario.setFocusable(false);
 
         jLabel12.setText("Usuario: ");
 
@@ -316,17 +317,17 @@ public class frmEmpleado extends javax.swing.JFrame {
         panelUsuario1Layout.setHorizontalGroup(
             panelUsuario1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUsuario1Layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(panelUsuario1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelUsuario1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUsuario1Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPass1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51))
         );
         panelUsuario1Layout.setVerticalGroup(
@@ -334,12 +335,12 @@ public class frmEmpleado extends javax.swing.JFrame {
             .addGroup(panelUsuario1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addGroup(panelUsuario1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addGap(20, 20, 20)
                 .addGroup(panelUsuario1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(txtPass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
@@ -364,105 +365,127 @@ public class frmEmpleado extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(panelUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 611, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelUsuario1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(247, 247, 247))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(247, 247, 247))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnModificar)
                     .addComponent(btnLimpiar)
                     .addComponent(btnEliminar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        Correo correo = new Correo();
-        EmpleadoDAO emp = new EmpleadoDAO();
-        Empleado empd = new Empleado();
-        Usuario used = new Usuario();
-        UsuarioDAO use = new UsuarioDAO();
-        empd.setNombreEmpleado(txtNombre.getText());
-        empd.setApellidoEmpleado(txtApellido.getText());
-        empd.setFechaEmpleado(txtFecha.getText());
-        empd.setCorreoEmpleado(txtCorreo.getText());
-        empd.setDuiEmpleado(txtDui.getText());
-        empd.setNitEmpleado(txtNit.getText());
-        empd.setSueldoEmpleado(Double.parseDouble(txtSueldo.getText()));
-        CargoDAO car = new CargoDAO();
-        Cargo card = new Cargo();
-        EstadoEmpleadoDAO esta = new EstadoEmpleadoDAO();
-        EstadoEmpleado estad = new EstadoEmpleado();
-        card.setNombreCargo(cmbCargo.getSelectedItem().toString());
-        estad.setEstado(cmbEstado.getSelectedItem().toString());
-        empd.setFk_idCargo(car.findBy(card, "cargo").get(0).getIdCargo());
-        empd.setFk_idEstado(esta.findBy(estad, "estado").get(0).getIdEstado());
-        
-        if(car.findBy(card, "cargo").get(0).isAccesso()){
-            used.setUsuario(txtUsuario.getText());
-            used.setPass(Encriptacion.encriptar(txtPass.getText()));
-            correo.SendMail("Bienvenido a nuestra comunidad, se te brindara a continuacion su usuario y contraseña:"
-                    + "\n\nUsuario: "+txtUsuario.getText()+"\nContraseña: "+txtPass.getText(), txtCorreo.getText(), "Bienvenido a la empresa!!!!!");
-            emp.insert(empd);
-            use.insert(used);
-        }else{
-            emp.insert(empd);
+        try {
+            if (!txtNombre.getText().isEmpty() && !txtApellido.getText().isEmpty() && !txtCorreo.getText().isEmpty()
+                    && txtDui.getText().length() > 5 && txtNit.getText().length() > 5 && cmbCargo.getSelectedIndex() > 0
+                    && cmbEstado.getSelectedIndex() > 0 && !txtSueldo.getText().isEmpty()) {
+                Correo correo = new Correo();
+                EmpleadoDAO emp = new EmpleadoDAO();
+                Empleado empd = new Empleado();
+                Usuario used = new Usuario();
+                UsuarioDAO use = new UsuarioDAO();
+                empd.setNombreEmpleado(txtNombre.getText());
+                empd.setApellidoEmpleado(txtApellido.getText());
+                empd.setFechaEmpleado(txtFecha.getText());
+                empd.setCorreoEmpleado(txtCorreo.getText());
+                empd.setDuiEmpleado(txtDui.getText());
+                empd.setNitEmpleado(txtNit.getText());
+                empd.setSueldoEmpleado(Double.parseDouble(txtSueldo.getText()));
+                CargoDAO car = new CargoDAO();
+                Cargo card = new Cargo();
+                EstadoEmpleadoDAO esta = new EstadoEmpleadoDAO();
+                EstadoEmpleado estad = new EstadoEmpleado();
+                card.setNombreCargo(cmbCargo.getSelectedItem().toString());
+                estad.setEstado(cmbEstado.getSelectedItem().toString());
+                empd.setFk_idCargo(car.findBy(card, "cargo").get(0).getIdCargo());
+                empd.setFk_idEstado(esta.findBy(estad, "estado").get(0).getIdEstado());
+
+                if (car.findBy(card, "cargo").get(0).isAccesso()) {
+                    used.setUsuario(txtUsuario.getText());
+                    used.setPass(Encriptacion.encriptar(txtPass.getText()));
+                    correo.SendMail("Bienvenido a nuestra comunidad, se te brindara a continuacion su usuario y contraseña:"
+                            + "\n\nUsuario: " + txtUsuario.getText() + "\nContraseña: " + txtPass.getText(), txtCorreo.getText(), "Bienvenido a la empresa!!!!!");
+                    emp.insert(empd);
+                    use.insert(used);
+                } else {
+                    emp.insert(empd);
+                }
+                JOptionPane.showMessageDialog(null, "Dato ingresado con exito!");
+                limpiar();
+                llenarTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos!");
+            }
+        } catch (Exception e) {
+
         }
-        limpiar();
-        llenarTabla();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        EmpleadoDAO emp = new EmpleadoDAO();
-        Empleado empd = new Empleado();
-        empd.setNombreEmpleado(txtNombre.getText());
-        empd.setIdEmpleado(Integer.parseInt(txtId.getText()));
-        empd.setApellidoEmpleado(txtApellido.getText());
-        empd.setFechaEmpleado(txtFecha.getText());
-        empd.setCorreoEmpleado(txtCorreo.getText());
-        empd.setDuiEmpleado(txtDui.getText());
-        empd.setNitEmpleado(txtNit.getText());
-        empd.setSueldoEmpleado(Double.parseDouble(txtSueldo.getText()));
-        CargoDAO car = new CargoDAO();
-        Cargo card = new Cargo();
-        EstadoEmpleadoDAO esta = new EstadoEmpleadoDAO();
-        EstadoEmpleado estad = new EstadoEmpleado();
-        card.setNombreCargo(cmbCargo.getSelectedItem().toString());
-        estad.setEstado(cmbEstado.getSelectedItem().toString());
-        empd.setFk_idCargo(car.findBy(card, "cargo").get(0).getIdCargo());
-        empd.setFk_idEstado(esta.findBy(estad, "estado").get(0).getIdEstado());
-        emp.update(empd);
-        limpiar();
-        llenarTabla();
+        try {
+            if (!txtNombre.getText().isEmpty() && !txtApellido.getText().isEmpty() && !txtCorreo.getText().isEmpty()
+                    && txtDui.getText().length() > 5 && txtNit.getText().length() > 5 && cmbCargo.getSelectedIndex() > 0
+                    && cmbEstado.getSelectedIndex() > 0 && !txtSueldo.getText().isEmpty() && !txtId.getText().isEmpty()) {
+                EmpleadoDAO emp = new EmpleadoDAO();
+                Empleado empd = new Empleado();
+                empd.setNombreEmpleado(txtNombre.getText());
+                empd.setIdEmpleado(Integer.parseInt(txtId.getText()));
+                empd.setApellidoEmpleado(txtApellido.getText());
+                empd.setFechaEmpleado(txtFecha.getText());
+                empd.setCorreoEmpleado(txtCorreo.getText());
+                empd.setDuiEmpleado(txtDui.getText());
+                empd.setNitEmpleado(txtNit.getText());
+                empd.setSueldoEmpleado(Double.parseDouble(txtSueldo.getText()));
+                CargoDAO car = new CargoDAO();
+                Cargo card = new Cargo();
+                EstadoEmpleadoDAO esta = new EstadoEmpleadoDAO();
+                EstadoEmpleado estad = new EstadoEmpleado();
+                card.setNombreCargo(cmbCargo.getSelectedItem().toString());
+                estad.setEstado(cmbEstado.getSelectedItem().toString());
+                empd.setFk_idCargo(car.findBy(card, "cargo").get(0).getIdCargo());
+                empd.setFk_idEstado(esta.findBy(estad, "estado").get(0).getIdEstado());
+                emp.update(empd);
+                JOptionPane.showMessageDialog(null, "Dato modificado con exito!");
+                limpiar();
+                llenarTabla();
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void tblTablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTablaMouseClicked
@@ -508,12 +531,21 @@ public class frmEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoKeyPressed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        EmpleadoDAO emp = new EmpleadoDAO();
-        Empleado empd = new Empleado();
-        empd.setIdEmpleado(Integer.parseInt(txtId.getText()));
-        emp.delete(empd);
-        limpiar();
-        llenarTabla();
+        try {
+            if (!txtId.getText().isEmpty()) {
+                EmpleadoDAO emp = new EmpleadoDAO();
+                Empleado empd = new Empleado();
+                empd.setIdEmpleado(Integer.parseInt(txtId.getText()));
+                emp.delete(empd);
+                JOptionPane.showMessageDialog(null, "Dato eliminado con exito!");
+                limpiar();
+                llenarTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un dato!");
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
@@ -544,12 +576,12 @@ public class frmEmpleado extends javax.swing.JFrame {
         cmbCargo.setSelectedIndex(0);
         cmbEstado.setSelectedIndex(0);
         txtSueldo.setText("");
-        try{
+        try {
             txtPass.setText("");
             txtUsuario.setText("");
-        }catch(Exception e){
-            
-        }        
+        } catch (Exception e) {
+
+        }
         panelUsuario1.setVisible(false);
     }
 
@@ -629,8 +661,6 @@ public class frmEmpleado extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbCargo;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -647,7 +677,6 @@ public class frmEmpleado extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JPanel panelUsuario;
     private javax.swing.JPanel panelUsuario1;
     private javax.swing.JTable tblTabla;
     private javax.swing.JTextField txtApellido;
@@ -658,9 +687,7 @@ public class frmEmpleado extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtNit;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JPasswordField txtPass;
-    private javax.swing.JPasswordField txtPass1;
     private javax.swing.JTextField txtSueldo;
     private javax.swing.JTextField txtUsuario;
-    private javax.swing.JTextField txtUsuario1;
     // End of variables declaration//GEN-END:variables
 }

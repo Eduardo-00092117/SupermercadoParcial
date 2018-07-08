@@ -23,8 +23,8 @@ public class frmProveedor extends javax.swing.JFrame {
         initComponents();
         txtId.setVisible(false);
         llenarTabla();
-        this.setTitle("Proveedor"); 
-        this.setResizable(false); 
+        this.setTitle("Proveedor");
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
 
@@ -277,49 +277,76 @@ public class frmProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ProveedorDAO pro = new ProveedorDAO(); //Se instancia la clase para buscar el id del proveedor.
-        Proveedor prod = new Proveedor(); //Se instancia la clase para guardar los datos.
-        prod.setNombreEmpresa(txtEmpresa.getText());
-        prod.setNombreEncargado(txtEncargado.getText());
-        prod.setDuiEncargado(txtDui.getText());
-        prod.setTelefonoEncargado(txtTelefono.getText());
-        prod.setUrlEncargado(txtUrl.getText());
+        try {
+            if (!txtEmpresa.getText().isEmpty() && !txtEncargado.getText().isEmpty()
+                    && !txtTelefono.getText().isEmpty() && !txtUrl.getText().isEmpty() && !txtDui.getText().isEmpty()) {
+                ProveedorDAO pro = new ProveedorDAO(); //Se instancia la clase para buscar el id del proveedor.
+                Proveedor prod = new Proveedor(); //Se instancia la clase para guardar los datos.
+                prod.setNombreEmpresa(txtEmpresa.getText());
+                prod.setNombreEncargado(txtEncargado.getText());
+                prod.setDuiEncargado(txtDui.getText());
+                prod.setTelefonoEncargado(txtTelefono.getText());
+                prod.setUrlEncargado(txtUrl.getText());
 
-        pro.insert(prod);
-        JOptionPane.showMessageDialog(null, "Dato ingresado con Exito!");
+                pro.insert(prod);
+                JOptionPane.showMessageDialog(null, "Dato ingresado con Exito!");
 
-        limpiar();
-        llenarTabla();
+                limpiar();
+                llenarTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos!!!");
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        ProveedorDAO pro = new ProveedorDAO(); //Se instancia la clase para buscar el id del proveedor.
-        Proveedor prod = new Proveedor(); //Se instancia la clase para guardar los datos.
-        prod.setNombreEmpresa(txtEmpresa.getText());
-        prod.setNombreEncargado(txtEncargado.getText());
-        prod.setDuiEncargado(txtDui.getText());
-        prod.setTelefonoEncargado(txtTelefono.getText());
-        prod.setUrlEncargado(txtUrl.getText());
-        prod.setIdProveedor(Integer.parseInt(txtId.getText()));
+        try {
+            if (!txtEmpresa.getText().isEmpty() && !txtEncargado.getText().isEmpty()
+                    && !txtTelefono.getText().isEmpty() && !txtUrl.getText().isEmpty() && !txtDui.getText().isEmpty()
+                    && !txtId.getText().isEmpty()) {
+                ProveedorDAO pro = new ProveedorDAO(); //Se instancia la clase para buscar el id del proveedor.
+                Proveedor prod = new Proveedor(); //Se instancia la clase para guardar los datos.
+                prod.setNombreEmpresa(txtEmpresa.getText());
+                prod.setNombreEncargado(txtEncargado.getText());
+                prod.setDuiEncargado(txtDui.getText());
+                prod.setTelefonoEncargado(txtTelefono.getText());
+                prod.setUrlEncargado(txtUrl.getText());
+                prod.setIdProveedor(Integer.parseInt(txtId.getText()));
 
-        pro.update(prod);
-        JOptionPane.showMessageDialog(null, "Dato modificado con Exito!");
+                pro.update(prod);
+                JOptionPane.showMessageDialog(null, "Dato modificado con Exito!");
 
-        limpiar();
-        llenarTabla();
+                limpiar();
+                llenarTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos!!!");
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        ProveedorDAO pro = new ProveedorDAO();
-        Proveedor prod = new Proveedor();
-        prod.setIdProveedor(Integer.parseInt(txtId.getText()));
+        try {
+            if (!txtId.getText().isEmpty()) {
+                ProveedorDAO pro = new ProveedorDAO();
+                Proveedor prod = new Proveedor();
+                prod.setIdProveedor(Integer.parseInt(txtId.getText()));
 
-        pro.delete(prod);
-        
-        JOptionPane.showMessageDialog(null, "Dato borrado con Exito!");
-        
-        limpiar();
-        llenarTabla();
+                pro.delete(prod);
+
+                JOptionPane.showMessageDialog(null, "Dato borrado con Exito!");
+
+                limpiar();
+                llenarTabla();
+            } else{
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un dato!");
+            }
+        } catch (Exception e) {
+
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked

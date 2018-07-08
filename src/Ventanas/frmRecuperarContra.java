@@ -119,7 +119,7 @@ public class frmRecuperarContra extends javax.swing.JDialog {
                 String codigo2 = String.valueOf(rnd.nextInt(900) + 99999);
                 mensaje = "El codigo de confirmacion es " + codigo2;
                 To = txtcorreo.getText();
-                Subject = "Codigo de confirmacion (SOY LA VERGA xD)";
+                Subject = "Codigo de confirmacion para cambio de contraseña";
                 correo.SendMail(mensaje, To, Subject);
                 this.hide();
                 frmRecuperarContra2 frm = new frmRecuperarContra2(null, true, codigo2, txtcorreo.getText());
