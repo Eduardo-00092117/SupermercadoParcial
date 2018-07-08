@@ -27,6 +27,7 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         llenarTabla();
+        txtId.setVisible(false);
     }
     public void limpiar(){
         txtNombre.setText("");
@@ -67,10 +68,14 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
         btnModificar = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         tableCategoriaProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,9 +96,9 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
             tableCategoriaProducto.getColumnModel().getColumn(0).setMaxWidth(0);
         }
 
-        jLabel1.setText("Nombre");
+        jLabel1.setText("Nombre:");
 
-        jLabel2.setText("Descripcion");
+        jLabel2.setText("Descripción:");
 
         AreatxtDescripcion.setColumns(20);
         AreatxtDescripcion.setRows(5);
@@ -120,15 +125,12 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
             }
         });
 
-        jMenu1.setText("Regresar");
-        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu1MouseClicked(evt);
+        jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,52 +140,57 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
+                                .addGap(53, 53, 53)
                                 .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAgregar)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(38, 38, 38)
+                                        .addComponent(btnAgregar))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(btnModificar)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnDelete)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(65, 65, 65)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAgregar)
                             .addComponent(btnModificar)
                             .addComponent(btnDelete))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -191,41 +198,66 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
-        CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
-        CategoriaProducto catPro = new CategoriaProducto();
-        catPro.setNombreCategoriaProducto(txtNombre.getText());
-        catPro.setDescripcionCategoriaProducto(AreatxtDescripcion.getText());
-        catProDao.insert(catPro);
-        JOptionPane.showMessageDialog(null,"Datos ingresados con exito");
-        limpiar();
-        llenarTabla();
-        
+        try{
+            if(!txtNombre.getText().isEmpty() && !AreatxtDescripcion.getText().isEmpty()){
+                // TODO add your handling code here:
+                CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
+                CategoriaProducto catPro = new CategoriaProducto();
+                catPro.setNombreCategoriaProducto(txtNombre.getText());
+                catPro.setDescripcionCategoriaProducto(AreatxtDescripcion.getText());
+                catProDao.insert(catPro);
+                JOptionPane.showMessageDialog(null, "Datos ingresados con exito");
+                limpiar();
+                llenarTabla();
+            } else{
+                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos!!");
+            }
+        }catch(Exception e){
+            
+        }       
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
-        CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
-        CategoriaProducto catPro = new CategoriaProducto();
-        catPro.setIdCategoriaProducto(Integer.parseInt(txtId.getText()));
-        catPro.setNombreCategoriaProducto(txtNombre.getText());
-        catPro.setDescripcionCategoriaProducto(AreatxtDescripcion.getText());
+        try{
+            if(!txtNombre.getText().isEmpty() && !AreatxtDescripcion.getText().isEmpty()){
+                // TODO add your handling code here:
+                CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
+                CategoriaProducto catPro = new CategoriaProducto();
+                catPro.setIdCategoriaProducto(Integer.parseInt(txtId.getText()));
+                catPro.setNombreCategoriaProducto(txtNombre.getText());
+                catPro.setDescripcionCategoriaProducto(AreatxtDescripcion.getText());
+
+                catProDao.update(catPro);
+                JOptionPane.showMessageDialog(null, "Datos modificados con exito");
+                limpiar();
+                llenarTabla(); 
+            } else{
+                JOptionPane.showMessageDialog(null, "Debe llenar todos los campos!!");
+            }
+        } catch(Exception e){
+            
+        }
         
-        catProDao.update(catPro);
-        JOptionPane.showMessageDialog(null, "Datos modificados con exito");
-        limpiar();
-        llenarTabla();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-        CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
-        CategoriaProducto catPro = new CategoriaProducto();
-        catPro.setIdCategoriaProducto(Integer.parseInt(txtId.getText()));
-        catProDao.delete(catPro);
-        JOptionPane.showMessageDialog(null, "Datos eliminados con exito");
-        limpiar();
-        llenarTabla();
+        try{
+            if(!txtId.getText().isEmpty()){
+                // TODO add your handling code here:
+                CategoriaProductoDAO catProDao = new CategoriaProductoDAO();
+                CategoriaProducto catPro = new CategoriaProducto();
+                catPro.setIdCategoriaProducto(Integer.parseInt(txtId.getText()));
+                catProDao.delete(catPro);
+                JOptionPane.showMessageDialog(null, "Datos eliminados con exito");
+                limpiar();
+                llenarTabla();
+            } else{
+                JOptionPane.showMessageDialog(null, "Debe seleccionar un dato!!");
+            }
+        } catch(Exception e){
+            
+        }
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void tableCategoriaProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCategoriaProductoMouseClicked
@@ -238,13 +270,14 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
         txtNombre.setText(nombre);
         AreatxtDescripcion.setText(descripcion);
     }//GEN-LAST:event_tableCategoriaProductoMouseClicked
+    
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        
+    }//GEN-LAST:event_formWindowClosed
 
-    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
-        // TODO add your handling code here:
-        frmProducto frm = new frmProducto();
-        frm.show();
-        this.hide();
-    }//GEN-LAST:event_jMenu1MouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        limpiar();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,10 +327,9 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnModificar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableCategoriaProducto;

@@ -41,7 +41,7 @@ public class frmEmpleado extends javax.swing.JFrame {
         for (EstadoEmpleado estado : esta.findAll()) {
             cmbEstado.addItem(estado.getEstado());
         }
-        SimpleDateFormat formateador = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat formateador = new SimpleDateFormat("yyyy-MM-dd");
         txtFecha.setDateFormat(formateador);
         llenarTabla();
         txtId.setVisible(false);
