@@ -9,6 +9,7 @@ import Dao.EntidadesDAO.EmpleadoDAO;
 import Dao.EntidadesDAO.UsuarioDAO;
 import static Clases.Encriptacion.encriptar;
 import Entidades.*;
+import java.awt.Panel;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -26,6 +27,7 @@ public class frmLogin extends javax.swing.JFrame {
         this.setTitle("Iniciar Sesion");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
     }
 
     /**

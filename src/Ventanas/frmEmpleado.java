@@ -33,6 +33,7 @@ public class frmEmpleado extends javax.swing.JFrame {
         this.setTitle("Empleado");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
         CargoDAO car = new CargoDAO();
         for (Cargo cargo : car.findAll()) {
             cmbCargo.addItem(cargo.getNombreCargo());

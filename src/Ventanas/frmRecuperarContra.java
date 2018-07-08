@@ -28,6 +28,7 @@ public class frmRecuperarContra extends javax.swing.JDialog {
         this.setTitle("Correo del Usuario");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
 
         InputMap map1 = txtcorreo.getInputMap(JTextField.WHEN_FOCUSED);
         map1.put(KeyStroke.getKeyStroke(KeyEvent.VK_V, Event.CTRL_MASK), "null");

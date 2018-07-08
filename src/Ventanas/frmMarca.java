@@ -31,6 +31,7 @@ public class frmMarca extends javax.swing.JFrame {
         this.setTitle("Marca");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
     }
 
     //Llena la tabla y a la vez se ocupa para actualizar la tabla.

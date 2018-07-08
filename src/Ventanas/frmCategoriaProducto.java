@@ -28,6 +28,7 @@ public class frmCategoriaProducto extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         llenarTabla();
         txtId.setVisible(false);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
     }
     public void limpiar(){
         txtNombre.setText("");

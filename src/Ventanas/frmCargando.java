@@ -36,7 +36,7 @@ public class frmCargando extends javax.swing.JFrame {
         t.start();
         this.setResizable(false); 
         this.setLocationRelativeTo(null); 
-        this.getContentPane();
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
     }           
     /**
      * This method is called from within the constructor to initialize the form.

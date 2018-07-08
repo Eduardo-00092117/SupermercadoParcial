@@ -16,6 +16,7 @@ public class frmFacturacion extends javax.swing.JFrame {
      */
     public frmFacturacion() {
         initComponents();
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
     }
 
     /**

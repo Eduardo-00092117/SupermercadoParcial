@@ -31,6 +31,7 @@ public class frmRecuperarContra2 extends javax.swing.JDialog {
         this.setTitle("Codigo de confirmacion");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
 
         lblcodigo.setText(codigo);
         lblcodigo.setVisible(false);
