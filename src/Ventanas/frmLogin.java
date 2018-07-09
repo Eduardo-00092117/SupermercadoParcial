@@ -169,22 +169,13 @@ public class frmLogin extends javax.swing.JFrame {
         used.setUsuario(txtUsuario.getText());
         used.setPass(encriptar(txtContrasena.getText()));
 
-        int i;
-        String palabra = "";
-        for (i = 0; i < txtUsuario.getText().length(); i++) {
-            if (txtUsuario.getText().charAt(i) == '@') {
-                break;
-            }
-            palabra = palabra + txtUsuario.getText().charAt(i);
-        }
-
         if (!use.findBy(used, "usuario").isEmpty()) {
             if (!use.findBy(used, "pass").isEmpty()) {
                 empd.setIdEmpleado(use.findBy(used, "usuario").get(0).getFK_idEmpleado());
                 UsuarioDAO.tipoUsuario = emp.findBy(empd, "idEmpleado").get(0).getFk_idCargo();
                 UsuarioDAO.idEmpleado = empd.getIdEmpleado();
                 UsuarioDAO.idUsuario = use.findBy(used, "usuario").get(0).getIdUsuario();
-                if (palabra.equals(txtContrasena.getText())) {
+                if (txtUsuario.getText().equals(txtContrasena.getText())) {
                     frmCambiarContraInicial frm = new frmCambiarContraInicial();
                     frm.show();
                 } else {

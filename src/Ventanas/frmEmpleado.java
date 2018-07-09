@@ -157,6 +157,11 @@ public class frmEmpleado extends javax.swing.JFrame {
             }
         });
 
+        txtCorreo.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                txtCorreoComponentAdded(evt);
+            }
+        });
         txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCorreoKeyPressed(evt);
@@ -227,11 +232,9 @@ public class frmEmpleado extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(cmbCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtNit, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDui, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtNit, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtDui, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)))
                 .addGap(25, 25, 25)
                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58))
@@ -559,14 +562,13 @@ public class frmEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void txtCorreoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyPressed
-        txtUsuario.setText(txtCorreo.getText());
         boolean bandera = true;
         for (int i = 0; i < txtCorreo.getText().length(); i++) {
             if (txtCorreo.getText().charAt(i) == '@') {
                 bandera = false;
             }
         }
-        if (bandera) {
+        if (bandera) {            
             txtUsuario.setText(txtCorreo.getText());
             txtPass.setText(txtCorreo.getText());
         }
@@ -633,6 +635,10 @@ public class frmEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
         validando.soloNumeros(evt);
     }//GEN-LAST:event_txtSueldoKeyTyped
+
+    private void txtCorreoComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_txtCorreoComponentAdded
+        
+    }//GEN-LAST:event_txtCorreoComponentAdded
 
     public void limpiar() {
         txtNombre.setText("");
