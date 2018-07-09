@@ -258,7 +258,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="apellidos:"/>
+            <Property name="text" type="java.lang.String" value="Apellidos:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -304,8 +304,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombre">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtApellido">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtApellidoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtDui">
           <Properties>
@@ -313,6 +319,9 @@
               <Format format="########-#" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDuiKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCorreo">
           <Events>
@@ -325,6 +334,9 @@
               <Format format="####-######-###-#" subtype="-1" type="5"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNitKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbCargo">
           <Properties>
@@ -354,6 +366,9 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="txtSueldo">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSueldoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtId">
         </Component>

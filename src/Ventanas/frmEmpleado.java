@@ -11,6 +11,7 @@ import Dao.EntidadesDAO.EmpleadoDAO;
 import Dao.EntidadesDAO.EstadoEmpleadoDAO;
 import Dao.EntidadesDAO.UsuarioDAO;
 import Clases.Encriptacion;
+import Clases.Validar;
 import Entidades.Cargo;
 import Entidades.Empleado;
 import Entidades.EstadoEmpleado;
@@ -28,6 +29,7 @@ public class frmEmpleado extends javax.swing.JFrame {
     /**
      * Creates new form frmUsuario
      */
+    Validar validando = new Validar();
     public frmEmpleado() {
         initComponents();
         this.setTitle("Empleado");
@@ -113,7 +115,7 @@ public class frmEmpleado extends javax.swing.JFrame {
 
         jLabel1.setText("Nombres:");
 
-        jLabel2.setText("apellidos:");
+        jLabel2.setText("Apellidos:");
 
         jLabel3.setText("Fecha de nacimiento:");
 
@@ -131,11 +133,28 @@ public class frmEmpleado extends javax.swing.JFrame {
 
         txtFecha.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
+
+        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoKeyTyped(evt);
+            }
+        });
+
         try {
             txtDui.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtDui.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDuiKeyTyped(evt);
+            }
+        });
 
         txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -148,6 +167,11 @@ public class frmEmpleado extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtNit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNitKeyTyped(evt);
+            }
+        });
 
         cmbCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción" }));
         cmbCargo.addItemListener(new java.awt.event.ItemListener() {
@@ -157,6 +181,12 @@ public class frmEmpleado extends javax.swing.JFrame {
         });
 
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una opción" }));
+
+        txtSueldo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSueldoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -234,12 +264,13 @@ public class frmEmpleado extends javax.swing.JFrame {
                                     .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(8, 8, 8)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(16, 16, 16)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel7)))
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
@@ -255,7 +286,6 @@ public class frmEmpleado extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434608001_save_as-2.png"))); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,7 +293,6 @@ public class frmEmpleado extends javax.swing.JFrame {
             }
         });
 
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434607676_system-software-update.png"))); // NOI18N
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,7 +300,6 @@ public class frmEmpleado extends javax.swing.JFrame {
             }
         });
 
-        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434664404_edit-clear.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,7 +376,6 @@ public class frmEmpleado extends javax.swing.JFrame {
                 .addContainerGap(78, Short.MAX_VALUE))
         );
 
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434841655_f-cross_256.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,7 +383,6 @@ public class frmEmpleado extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434853539_go-back.png"))); // NOI18N
         jMenu1.setText("Regresar");
         jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -384,14 +410,14 @@ public class frmEmpleado extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGuardar)
-                        .addGap(3, 3, 3)
-                        .addComponent(btnModificar)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnLimpiar)
-                        .addGap(236, 236, 236))))
+                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(247, 247, 247))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,7 +432,7 @@ public class frmEmpleado extends javax.swing.JFrame {
                     .addComponent(btnModificar)
                     .addComponent(btnLimpiar)
                     .addComponent(btnEliminar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -572,6 +598,31 @@ public class frmEmpleado extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_cmbCargoItemStateChanged
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        // TODO add your handling code here:
+        validando.soloLetras(evt);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        // TODO add your handling code here:
+        validando.soloLetras(evt);
+    }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtDuiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDuiKeyTyped
+        // TODO add your handling code here:
+        validando.soloNumeros(evt);
+    }//GEN-LAST:event_txtDuiKeyTyped
+
+    private void txtNitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNitKeyTyped
+        // TODO add your handling code here:
+        validando.soloNumeros(evt);
+    }//GEN-LAST:event_txtNitKeyTyped
+
+    private void txtSueldoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSueldoKeyTyped
+        // TODO add your handling code here:
+        validando.soloNumeros(evt);
+    }//GEN-LAST:event_txtSueldoKeyTyped
 
     public void limpiar() {
         txtNombre.setText("");
