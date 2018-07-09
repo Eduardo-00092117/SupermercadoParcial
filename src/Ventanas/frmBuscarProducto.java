@@ -8,23 +8,24 @@ package Ventanas;
 import Dao.EntidadesDAO.CategoriaProductoDAO;
 import Dao.EntidadesDAO.MarcaDAO;
 import Dao.EntidadesDAO.ProductoDAO;
+import Dao.EntidadesDAO.UsuarioDAO;
 import Entidades.CategoriaProducto;
 import Entidades.Marca;
 import Entidades.Producto;
 import java.awt.event.KeyEvent;
-import javax.swing.ButtonGroup;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Roberto
+ * @author Eduardo Alberto López Torres <Carnet: 00092117>
  */
-public class frmBuscarProducto extends javax.swing.JFrame {
+public class frmBuscarProducto extends javax.swing.JDialog {
 
     /**
      * Creates new form frmBuscarProducto
      */
-    public frmBuscarProducto() {
+    public frmBuscarProducto(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
         this.setTitle("Buscar Producto");
         this.setResizable(false);
@@ -42,34 +43,15 @@ public class frmBuscarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txtBuscador = new javax.swing.JTextField();
-        btnBuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableBuscarProducto = new javax.swing.JTable();
+        btnBuscar = new javax.swing.JButton();
+        txtBuscador = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                formKeyReleased(evt);
-            }
-        });
-
-        jLabel1.setText("Buscar Producto ");
-
-        txtBuscador.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtBuscadorKeyPressed(evt);
-            }
-        });
-
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434610269_old-edit-find.png"))); // NOI18N
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tableBuscarProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,6 +68,33 @@ public class frmBuscarProducto extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tableBuscarProducto);
 
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434610269_old-edit-find.png"))); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        txtBuscador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBuscadorKeyPressed(evt);
+            }
+        });
+
+        jLabel1.setText("Buscar Producto ");
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434853539_go-back.png"))); // NOI18N
+        jMenu1.setText("Regresar");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,7 +109,7 @@ public class frmBuscarProducto extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1112, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1069, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -112,20 +121,20 @@ public class frmBuscarProducto extends javax.swing.JFrame {
                     .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        llenarTablaFiltro(); 
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
     private void tableBuscarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableBuscarProductoMouseClicked
 
     }//GEN-LAST:event_tableBuscarProductoMouseClicked
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        llenarTablaFiltro();
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtBuscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
@@ -133,11 +142,17 @@ public class frmBuscarProducto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtBuscadorKeyPressed
 
-    private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formKeyReleased
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        if(UsuarioDAO.tipoUsuario == 1){
+            this.hide();
+        }else if(UsuarioDAO.tipoUsuario == 2){
+            frmMenuGerente frm = new frmMenuGerente();
+            frm.show();
+            this.hide();
+        }
+    }//GEN-LAST:event_jMenu1MouseClicked
 
-    public void llenarTabla(){
+        public void llenarTabla(){
         //Se ocupa para borrar los datos de la tabla.
         DefaultTableModel modelos = (DefaultTableModel) tableBuscarProducto.getModel();
         while(modelos.getRowCount()>0)modelos.removeRow(0);
@@ -198,8 +213,8 @@ public class frmBuscarProducto extends javax.swing.JFrame {
                //PARA FK ID CATEGORIA PRODUCTO
               
         }
-        
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -227,10 +242,17 @@ public class frmBuscarProducto extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmBuscarProducto().setVisible(true);
+                frmBuscarProducto dialog = new frmBuscarProducto(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -238,6 +260,8 @@ public class frmBuscarProducto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableBuscarProducto;
     private javax.swing.JTextField txtBuscador;

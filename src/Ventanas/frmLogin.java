@@ -192,7 +192,9 @@ public class frmLogin extends javax.swing.JFrame {
                         frmMenuGerente frm = new frmMenuGerente();
                         frm.show();
                     } else if(UsuarioDAO.tipoUsuario == 1){
-                        JOptionPane.showMessageDialog(null, "Formulario Cajero!!");
+                        frmFacturacion frm = new frmFacturacion();
+                        frm.show();
+                        this.hide();
                     }
                 }
                 this.hide();

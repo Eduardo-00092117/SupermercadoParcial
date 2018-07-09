@@ -88,6 +88,11 @@ public class frmMenuGerente extends javax.swing.JFrame {
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434860743_tick.png"))); // NOI18N
         jButton5.setText("Facturación");
         jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1434860743_tick.png"))); // NOI18N
         jButton6.setText("Inventario");
@@ -214,11 +219,16 @@ public class frmMenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        frmBuscarProducto frm = new frmBuscarProducto();
-        frm.show();
+        frmBuscarProducto frm = new frmBuscarProducto(null, true);
         this.hide();
+        frm.show();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        frmFacturacion frm = new frmFacturacion();
+        this.hide();
+        frm.show();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
