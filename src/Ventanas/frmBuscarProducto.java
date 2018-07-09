@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import Clases.Validar;
 import Dao.EntidadesDAO.CategoriaProductoDAO;
 import Dao.EntidadesDAO.MarcaDAO;
 import Dao.EntidadesDAO.ProductoDAO;
@@ -24,6 +25,7 @@ public class frmBuscarProducto extends javax.swing.JDialog {
     /**
      * Creates new form frmBuscarProducto
      */
+    Validar validando = new Validar();
     public frmBuscarProducto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -79,6 +81,9 @@ public class frmBuscarProducto extends javax.swing.JDialog {
         txtBuscador.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBuscadorKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscadorKeyTyped(evt);
             }
         });
 
@@ -151,6 +156,11 @@ public class frmBuscarProducto extends javax.swing.JDialog {
             this.hide();
         }
     }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void txtBuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyTyped
+        // TODO add your handling code here:
+        validando.soloNumeros(evt);
+    }//GEN-LAST:event_txtBuscadorKeyTyped
 
         public void llenarTabla(){
         //Se ocupa para borrar los datos de la tabla.
