@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import Clases.Validar;
 import Dao.EntidadesDAO.CategoriaProductoDAO;
 import Dao.EntidadesDAO.MarcaDAO;
 import Dao.EntidadesDAO.ProductoDAO;
@@ -30,6 +31,7 @@ public class frmProducto extends javax.swing.JFrame {
     /**
      * Creates new form frmProducto
      */
+     Validar validando =new Validar();
     public frmProducto() {
         initComponents();
         MarcaDAO marcaDao = new MarcaDAO();
@@ -128,6 +130,11 @@ public class frmProducto extends javax.swing.JFrame {
                 txtProductoActionPerformed(evt);
             }
         });
+        txtProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProductoKeyTyped(evt);
+            }
+        });
 
         jLabel1.setText("Producto:");
 
@@ -221,6 +228,11 @@ public class frmProducto extends javax.swing.JFrame {
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
+            }
+        });
+        txtId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdKeyTyped(evt);
             }
         });
 
@@ -564,6 +576,16 @@ public class frmProducto extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         limpiar();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductoKeyTyped
+        // TODO add your handling code here:
+        validando.soloLetras(evt);
+    }//GEN-LAST:event_txtProductoKeyTyped
+
+    private void txtIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdKeyTyped
+        // TODO add your handling code here:
+        validando.soloNumeros(evt);
+    }//GEN-LAST:event_txtIdKeyTyped
     public void limpiar() {
         txtProducto.setText("");
         txtPrecioVenta.setText("");
