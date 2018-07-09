@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import Clases.Validar;
 import Dao.EntidadesDAO.ProductoDAO;
 import Dao.EntidadesDAO.UsuarioDAO;
 import Entidades.Producto;
@@ -27,6 +28,7 @@ public class frmFacturacion extends javax.swing.JFrame {
     /**
      * Creates new form frmFacturacion
      */
+    Validar validando = new Validar();
     public frmFacturacion() {
         initComponents();
         this.setTitle("Facturación");
@@ -130,6 +132,9 @@ public class frmFacturacion extends javax.swing.JFrame {
         txtCodigoProducto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCodigoProductoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoProductoKeyTyped(evt);
             }
         });
 
@@ -422,6 +427,11 @@ public class frmFacturacion extends javax.swing.JFrame {
     private void txtNoCajeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNoCajeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNoCajeroActionPerformed
+
+    private void txtCodigoProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoProductoKeyTyped
+        // TODO add your handling code here:
+        validando.soloNumeros(evt);
+    }//GEN-LAST:event_txtCodigoProductoKeyTyped
 
     /**
      * @param args the command line arguments
