@@ -41,7 +41,7 @@ public class FacturacionDAO extends BaseDao<Facturacion>{
 
     @Override
     PreparedStatement getSelectStatement(Connection con, Facturacion find, String by) {
-        String query = "SELECT * FROM "+tabla.TABLE_NAME+"WHERE"+by+"=?";
+        String query = "SELECT * FROM "+tabla.TABLE_NAME+" WHERE "+by+" = ?";
         PreparedStatement preparedStatement = null;
         try{
             preparedStatement = con.prepareStatement(query);
@@ -66,7 +66,7 @@ public class FacturacionDAO extends BaseDao<Facturacion>{
          PreparedStatement preparedStatement = null;
          try{
               preparedStatement=con.prepareStatement(
-            "INSERT INTO "+ tabla.TABLE_NAME+"("+tabla.fields[0]+","+tabla.fields[1]+","+tabla.fields[2]
+            "INSERT INTO "+ tabla.TABLE_NAME+" (CONVERT (date, GETDATE()),"+tabla.fields[1]+","+tabla.fields[2]
                     +" VALUES (?,?,?)");
             preparedStatement.setString(1, _new.getFechaFactura());
             preparedStatement.setString(2, _new.getHoraFactura());
@@ -83,8 +83,8 @@ public class FacturacionDAO extends BaseDao<Facturacion>{
          PreparedStatement preparedStatement = null;
          try{
               preparedStatement = con.prepareStatement(
-            "UPDATE"+tabla.TABLE_NAME+"SET"+tabla.fields[0]+"=?,"+tabla.fields[1]+"=?,"+tabla.fields[2]
-                    +"= ? WHERE"+tabla.PRIMARY_KEY+"=?"    
+            "UPDATE"+tabla.TABLE_NAME+" SET "+tabla.fields[0]+" = ?,"+tabla.fields[1]+" =?, "+tabla.fields[2]
+                    +"= ? WHERE "+tabla.PRIMARY_KEY+"=?"    
             );
              preparedStatement.setString(1, _new.getFechaFactura());
              preparedStatement.setString(2, _new.getHoraFactura());
@@ -101,7 +101,7 @@ public class FacturacionDAO extends BaseDao<Facturacion>{
                 PreparedStatement preparedStatement = null;
         try{
             preparedStatement = con.prepareStatement(
-            "DELETE FROM "+tabla.TABLE_NAME+"WHERE "+ tabla.PRIMARY_KEY+"=?"
+            "DELETE FROM "+tabla.TABLE_NAME+" WHERE "+ tabla.PRIMARY_KEY+"=?"
             );
             preparedStatement.setInt(1, deleteObject.getIdFactura());
         }
