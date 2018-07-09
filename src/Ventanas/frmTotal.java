@@ -5,6 +5,9 @@
  */
 package Ventanas;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Eduardo Alberto López Torres <Carnet: 00092117>
@@ -14,9 +17,14 @@ public class frmTotal extends javax.swing.JDialog {
     /**
      * Creates new form frmTotal
      */
-    public frmTotal(java.awt.Frame parent, boolean modal) {
+    public frmTotal(java.awt.Frame parent, boolean modal, String total) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Total");
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new java.awt.Color(245, 204, 196));
+        lblTotal.setText(total);
     }
 
     /**
@@ -31,7 +39,7 @@ public class frmTotal extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtEfectivo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -44,9 +52,9 @@ public class frmTotal extends javax.swing.JDialog {
 
         jLabel3.setText("Efectivo: ");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtEfectivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtEfectivoActionPerformed(evt);
             }
         });
 
@@ -73,7 +81,7 @@ public class frmTotal extends javax.swing.JDialog {
                         .addGap(82, 82, 82)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addComponent(jButton1)))
@@ -88,7 +96,7 @@ public class frmTotal extends javax.swing.JDialog {
                 .addComponent(lblTotal)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
@@ -98,12 +106,25 @@ public class frmTotal extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEfectivoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtEfectivoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if (Double.parseDouble(txtEfectivo.getText()) >= Double.parseDouble(lblTotal.getText())) {
+            double vuelto = Double.parseDouble(txtEfectivo.getText()) - Double.parseDouble(lblTotal.getText());
+            JOptionPane.showMessageDialog(null, "Su cambio es " + vuelto);
+            frmFacturacion.lblIva.setText("0");
+            frmFacturacion.lblSubtotal.setText("0");
+            frmFacturacion.lblTotal.setText("0");
+            DefaultTableModel modelos = (DefaultTableModel) frmFacturacion.tblTabla.getModel();
+            while (modelos.getRowCount() > 0) {
+                modelos.removeRow(0);
+            }
+            this.hide();
+        } else {
+            JOptionPane.showMessageDialog(null, "El valor es insuficiente");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -136,7 +157,7 @@ public class frmTotal extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                frmTotal dialog = new frmTotal(new javax.swing.JFrame(), true);
+                frmTotal dialog = new frmTotal(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -152,7 +173,7 @@ public class frmTotal extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblTotal;
+    private javax.swing.JTextField txtEfectivo;
     // End of variables declaration//GEN-END:variables
 }

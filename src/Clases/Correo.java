@@ -26,7 +26,7 @@ public class Correo {
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("lopezeduardo220@gmail.com", "proyectoexpo");
+                return new PasswordAuthentication("seevossupermercado@gmail.com", "seevos2018");
             }
         });
 

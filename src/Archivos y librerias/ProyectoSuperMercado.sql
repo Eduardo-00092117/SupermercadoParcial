@@ -53,8 +53,8 @@ CREATE TABLE Marca(
 	FK_idProveedor INT NOT NULL CONSTRAINT FK_idProveedor REFERENCES Proveedor(idProveedor)
 )
 
-
-
+SELECT * FROM Producto
+UPDATE Empleado SET FK_idCargo = 2 WHERE idEmpleado = 1
 
 CREATE TABLE CategoriaProducto(
 	idCategoriaProducto INT IDENTITY CONSTRAINT PK_idProductoCategoria PRIMARY KEY,
